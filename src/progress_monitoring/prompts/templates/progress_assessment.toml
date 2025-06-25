@@ -1,0 +1,71 @@
+# Progress Assessment Prompt Configuration
+# This prompt is used for generating structured progress reports
+
+[metadata]
+version = "1.0"
+description = "Progress assessment and structured reporting prompts"
+author = "Progress Monitoring System"
+
+[progress_assessment]
+type = "progress_assessment"
+model_name = "gemini-2.5-pro"
+temperature = 0.5
+max_tokens = 2000
+top_p = 1.0
+frequency_penalty = 0.0
+presence_penalty = 0.0
+description = "Generate structured progress assessment from analysis text"
+
+template = """
+Based on the following construction site analysis, generate a structured progress assessment:
+
+ANALYSIS TEXT:
+${analysis_text}
+
+Please provide a structured assessment with the following information:
+
+1. **Current Phase**: What phase of construction is currently active?
+2. **Progress Percentage**: Estimate the overall project completion percentage (0-100%)
+3. **Key Accomplishments**: List 3-5 major accomplishments from today's work
+4. **Milestones Reached**: Any significant milestones or phase completions
+5. **Next Steps**: What work appears to be planned for upcoming days?
+6. **Timeline Status**: Is the project on schedule, ahead, or behind?
+7. **Risk Factors**: Any potential delays or issues identified
+8. **Quality Assessment**: Overall quality of work observed
+
+Format your response as a structured assessment that can be easily parsed.
+"""
+
+variables = { analysis_text = "" }
+
+[progress_assessment_openai]
+type = "progress_assessment"
+model_name = "gpt-4o"
+temperature = 0.4
+max_tokens = 2000
+top_p = 0.9
+frequency_penalty = 0.1
+presence_penalty = 0.1
+description = "OpenAI-optimized progress assessment prompt"
+
+template = """
+Based on the following construction site analysis, generate a structured progress assessment:
+
+ANALYSIS TEXT:
+${analysis_text}
+
+Please provide a structured assessment with the following information:
+
+1. **Current Phase**: What phase of construction is currently active?
+2. **Progress Percentage**: Estimate the overall project completion percentage (0-100%)
+3. **Key Accomplishments**: List 3-5 major accomplishments from today's work
+4. **Milestones Reached**: Any significant milestones or phase completions
+5. **Next Steps**: What work appears to be planned for upcoming days?
+6. **Timeline Status**: Is the project on schedule, ahead, or behind?
+7. **Risk Factors**: Any potential delays or issues identified
+8. **Quality Assessment**: Overall quality of work observed
+
+Format your response as a structured assessment that can be easily parsed.
+"""
+
+variables = { analysis_text = "" } 

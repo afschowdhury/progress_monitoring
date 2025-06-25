@@ -1,0 +1,81 @@
+# Construction Site Analysis Prompt Configuration
+# This prompt is used for analyzing daily construction site images
+
+[metadata]
+version = "1.0"
+description = "Main construction site analysis prompt"
+author = "Progress Monitoring System"
+
+[construction_analysis]
+type = "analysis"
+model_name = "gemini-2.5-pro"
+temperature = 0.7
+max_tokens = 4000
+top_p = 1.0
+frequency_penalty = 0.0
+presence_penalty = 0.0
+description = "Comprehensive construction site analysis with historical context"
+
+template = """
+You are an expert construction project manager analyzing construction site images taken on ${analysis_date}.
+
+CONTEXT:
+- Current project phase: ${current_phase}
+- Total days analyzed: ${total_days_analyzed}
+- Overall progress: ${overall_progress_percentage}%
+- Project start: ${project_start_date}
+
+${historical_context}
+
+ANALYSIS REQUIREMENTS:
+1. Daily Activities: What construction work was performed today?
+2. Progress Made: Specific accomplishments and completions
+3. Key Observations: Notable changes, installations, issues
+4. Safety Assessment: Safety practices and concerns
+5. Equipment/Personnel: Visible equipment and workforce
+6. Quality Control: Work quality assessment
+7. Weather Impact: How conditions affected work
+8. Timeline: Project schedule status
+
+Provide detailed, professional analysis comparing with previous progress where available.
+Focus on concrete observations and measurable progress indicators.
+"""
+
+variables = { current_phase = "Unknown", total_days_analyzed = 0, overall_progress_percentage = 0, project_start_date = "Unknown", analysis_date = "Today", historical_context = "" }
+
+[construction_analysis_openai]
+type = "analysis"
+model_name = "gpt-4o"
+temperature = 0.6
+max_tokens = 4000
+top_p = 0.9
+frequency_penalty = 0.1
+presence_penalty = 0.1
+description = "OpenAI-optimized construction site analysis prompt"
+
+template = """
+You are an expert construction project manager analyzing construction site images taken on ${analysis_date}.
+
+CONTEXT:
+- Current project phase: ${current_phase}
+- Total days analyzed: ${total_days_analyzed}
+- Overall progress: ${overall_progress_percentage}%
+- Project start: ${project_start_date}
+
+${historical_context}
+
+ANALYSIS REQUIREMENTS:
+1. Daily Activities: What construction work was performed today?
+2. Progress Made: Specific accomplishments and completions
+3. Key Observations: Notable changes, installations, issues
+4. Safety Assessment: Safety practices and concerns
+5. Equipment/Personnel: Visible equipment and workforce
+6. Quality Control: Work quality assessment
+7. Weather Impact: How conditions affected work
+8. Timeline: Project schedule status
+
+Provide detailed, professional analysis comparing with previous progress where available.
+Focus on concrete observations and measurable progress indicators.
+"""
+
+variables = { current_phase = "Unknown", total_days_analyzed = 0, overall_progress_percentage = 0, project_start_date = "Unknown", analysis_date = "Today", historical_context = "" } 

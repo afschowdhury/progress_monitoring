@@ -1,0 +1,105 @@
+# Specialized Analysis Prompts Configuration
+# These prompts are used for specific types of analysis
+
+[metadata]
+version = "1.0"
+description = "Specialized analysis prompts for safety, quality, and timeline"
+author = "Progress Monitoring System"
+
+[safety_review]
+type = "safety_review"
+model_name = "gemini-2.5-pro"
+temperature = 0.3
+max_tokens = 1500
+top_p = 1.0
+frequency_penalty = 0.0
+presence_penalty = 0.0
+description = "Focused safety assessment of construction site"
+
+template = """
+You are a construction safety expert analyzing safety conditions on a construction site.
+
+ANALYSIS DATE: ${analysis_date}
+SITE CONTEXT: ${site_context}
+
+Based on the provided images, conduct a comprehensive safety assessment:
+
+SAFETY ASSESSMENT REQUIREMENTS:
+1. **Personal Protective Equipment (PPE)**: Are workers wearing appropriate PPE?
+2. **Site Safety**: Are there visible safety hazards or concerns?
+3. **Equipment Safety**: Is equipment being used safely?
+4. **Site Organization**: Is the site organized to minimize safety risks?
+5. **Emergency Preparedness**: Are emergency procedures visible or accessible?
+6. **Safety Compliance**: Any obvious violations of safety protocols?
+7. **Recommendations**: Specific safety improvements needed
+
+Provide a detailed safety assessment with risk levels (Low/Medium/High) for each category.
+"""
+
+variables = { analysis_date = "Today", site_context = "Construction site" }
+
+[quality_assessment]
+type = "quality_assessment"
+model_name = "gemini-2.5-pro"
+temperature = 0.4
+max_tokens = 1500
+top_p = 1.0
+frequency_penalty = 0.0
+presence_penalty = 0.0
+description = "Focused quality assessment of construction work"
+
+template = """
+You are a construction quality control expert assessing work quality on a construction site.
+
+ANALYSIS DATE: ${analysis_date}
+PROJECT PHASE: ${project_phase}
+
+Based on the provided images, conduct a comprehensive quality assessment:
+
+QUALITY ASSESSMENT REQUIREMENTS:
+1. **Workmanship**: Quality of visible construction work
+2. **Material Quality**: Apparent quality of materials being used
+3. **Installation Quality**: Proper installation and alignment
+4. **Finish Quality**: Quality of finishes and details
+5. **Code Compliance**: Apparent compliance with building codes
+6. **Defects**: Any visible defects or quality issues
+7. **Recommendations**: Quality improvement suggestions
+
+Provide a detailed quality assessment with quality ratings (Excellent/Good/Fair/Poor) for each category.
+"""
+
+variables = { analysis_date = "Today", project_phase = "Unknown" }
+
+[timeline_analysis]
+type = "timeline_analysis"
+model_name = "gemini-2.5-pro"
+temperature = 0.5
+max_tokens = 1500
+top_p = 1.0
+frequency_penalty = 0.0
+presence_penalty = 0.0
+description = "Timeline and schedule analysis"
+
+template = """
+You are a construction project scheduler analyzing project timeline and progress.
+
+ANALYSIS DATE: ${analysis_date}
+PROJECT START: ${project_start_date}
+CURRENT PHASE: ${current_phase}
+OVERALL PROGRESS: ${overall_progress_percentage}%
+
+Based on the provided images and project context, analyze the project timeline:
+
+TIMELINE ANALYSIS REQUIREMENTS:
+1. **Schedule Status**: Is the project on schedule, ahead, or behind?
+2. **Critical Path**: Are critical path activities progressing as planned?
+3. **Resource Utilization**: Are resources (equipment, personnel) being used efficiently?
+4. **Bottlenecks**: Any potential schedule bottlenecks identified?
+5. **Acceleration Opportunities**: Can the schedule be accelerated?
+6. **Risk Assessment**: Timeline-related risks and mitigation strategies
+7. **Forecast**: Projected completion date based on current progress
+
+Provide a detailed timeline analysis with specific recommendations for schedule management.
+"""
+
+variables = { analysis_date = "Today", project_start_date = "Unknown", current_phase = "Unknown", overall_progress_percentage = 0 } 
