@@ -17,26 +17,44 @@ presence_penalty = 0.0
 description = "Generate structured progress assessment from analysis text"
 
 template = """
-Based on the following construction site analysis, generate a structured progress assessment:
+INSTRUCTIONS: Generate a structured progress assessment from the analysis below. Respond with ONLY valid JSON - no explanatory text, comments, or markdown formatting.
+
+PROJECT CONTEXT:
+- Days analyzed so far: ${total_days_analyzed}
+- Previous overall progress: ${previous_progress}%
+- Current project phase: ${current_phase}
 
 ANALYSIS TEXT:
 ${analysis_text}
 
-Please provide a structured assessment with the following information:
+JSON REQUIREMENTS:
+1. **current_phase**: Phase of construction currently active (consider context: ${current_phase}). Consider the analysis text to determine the current phase.
+2. **overall_progress_percentage**: New overall project completion percentage (0-100%) based on analysis and previous progress of ${previous_progress}%
+3. **daily_progress_percentage**: Progress made today specifically
+4. **key_accomplishments**: List 3-5 major accomplishments from today's work
+5. **identified_issues**: Problems, delays, or concerns noted
+6. **next_phase_indicators**: Signs indicating movement toward next construction phase
+7. **estimated_timeline_status**: "On Schedule", "Ahead of Schedule", or "Behind Schedule"
+8. **critical_path_items**: Key items that could affect project timeline
 
-1. **Current Phase**: What phase of construction is currently active?
-2. **Progress Percentage**: Estimate the overall project completion percentage (0-100%)
-3. **Key Accomplishments**: List 3-5 major accomplishments from today's work
-4. **Milestones Reached**: Any significant milestones or phase completions
-5. **Next Steps**: What work appears to be planned for upcoming days?
-6. **Timeline Status**: Is the project on schedule, ahead, or behind?
-7. **Risk Factors**: Any potential delays or issues identified
-8. **Quality Assessment**: Overall quality of work observed
-
-Format your response as a structured assessment that can be easily parsed.
+Respond with ONLY this exact JSON format:
+{
+    "current_phase": "Phase name",
+    "overall_progress_percentage": 50,
+    "daily_progress_percentage": 5,
+    "key_accomplishments": ["accomplishment 1", "accomplishment 2"],
+    "identified_issues": ["issue 1", "issue 2"],
+    "next_phase_indicators": ["indicator 1", "indicator 2"],
+    "estimated_timeline_status": "On Schedule",
+    "critical_path_items": ["item 1", "item 2"]
+}
 """
 
-variables = { analysis_text = "" }
+[progress_assessment.variables]
+analysis_text = ""
+total_days_analyzed = 0
+previous_progress = 0
+current_phase = "Unknown"
 
 [progress_assessment_openai]
 type = "progress_assessment"
@@ -49,23 +67,41 @@ presence_penalty = 0.1
 description = "OpenAI-optimized progress assessment prompt"
 
 template = """
-Based on the following construction site analysis, generate a structured progress assessment:
+INSTRUCTIONS: Generate a structured progress assessment from the analysis below. Respond with ONLY valid JSON - no explanatory text, comments, or markdown formatting.
+
+PROJECT CONTEXT:
+- Days analyzed so far: ${total_days_analyzed}
+- Previous overall progress: ${previous_progress}%
+- Current project phase: ${current_phase}
 
 ANALYSIS TEXT:
 ${analysis_text}
 
-Please provide a structured assessment with the following information:
+JSON REQUIREMENTS:
+1. **current_phase**: Phase of construction currently active (consider context: ${current_phase})
+2. **overall_progress_percentage**: New overall project completion percentage (0-100%) based on analysis and previous progress of ${previous_progress}%
+3. **daily_progress_percentage**: Progress made today specifically
+4. **key_accomplishments**: List 3-5 major accomplishments from today's work
+5. **identified_issues**: Problems, delays, or concerns noted
+6. **next_phase_indicators**: Signs indicating movement toward next construction phase
+7. **estimated_timeline_status**: "On Schedule", "Ahead of Schedule", or "Behind Schedule"
+8. **critical_path_items**: Key items that could affect project timeline
 
-1. **Current Phase**: What phase of construction is currently active?
-2. **Progress Percentage**: Estimate the overall project completion percentage (0-100%)
-3. **Key Accomplishments**: List 3-5 major accomplishments from today's work
-4. **Milestones Reached**: Any significant milestones or phase completions
-5. **Next Steps**: What work appears to be planned for upcoming days?
-6. **Timeline Status**: Is the project on schedule, ahead, or behind?
-7. **Risk Factors**: Any potential delays or issues identified
-8. **Quality Assessment**: Overall quality of work observed
-
-Format your response as a structured assessment that can be easily parsed.
+Respond with ONLY this exact JSON format:
+{
+    "current_phase": "Phase name",
+    "overall_progress_percentage": 50,
+    "daily_progress_percentage": 5,
+    "key_accomplishments": ["accomplishment 1", "accomplishment 2"],
+    "identified_issues": ["issue 1", "issue 2"],
+    "next_phase_indicators": ["indicator 1", "indicator 2"],
+    "estimated_timeline_status": "On Schedule",
+    "critical_path_items": ["item 1", "item 2"]
+}
 """
 
-variables = { analysis_text = "" } 
+[progress_assessment_openai.variables]
+analysis_text = ""
+total_days_analyzed = 0
+previous_progress = 0
+current_phase = "Unknown" 

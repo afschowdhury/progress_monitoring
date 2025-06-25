@@ -63,7 +63,19 @@ class GeminiProvider(AIProvider):
                 model=self.config.model_name,
                 contents=[prompt],
             )
-            return response.text
+            
+            # Validate response
+            if not response or not hasattr(response, 'text'):
+                self.logger.error("Gemini response is empty or invalid")
+                raise ValueError("Empty response from Gemini API")
+            
+            response_text = response.text
+            if not response_text or response_text.strip() == "":
+                self.logger.error("Gemini response text is empty")
+                raise ValueError("Empty response text from Gemini API")
+                
+            return response_text.strip()
+            
         except Exception as e:
             self.logger.error(f"Gemini structured response failed: {e}")
             raise 

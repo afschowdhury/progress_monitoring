@@ -77,7 +77,19 @@ class OpenAIProvider(AIProvider):
                 messages=[{"role": "user", "content": prompt}],
                 max_tokens=2000
             )
-            return response.choices[0].message.content
+            
+            # Validate response
+            if not response or not response.choices:
+                self.logger.error("OpenAI response is empty or invalid")
+                raise ValueError("Empty response from OpenAI API")
+            
+            response_text = response.choices[0].message.content
+            if not response_text or response_text.strip() == "":
+                self.logger.error("OpenAI response text is empty")
+                raise ValueError("Empty response text from OpenAI API")
+                
+            return response_text.strip()
+            
         except Exception as e:
             self.logger.error(f"OpenAI structured response failed: {e}")
             raise 
