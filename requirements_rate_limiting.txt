@@ -1,0 +1,9 @@
+# Requirements for rate limiting and parallel processing features
+tenacity>=8.2.0
+openai>=1.0.0
+python-dotenv>=1.0.0
+icecream>=2.1.0
+
+# Optional: For better performance with parallel processing
+aiohttp>=3.8.0
+asyncio-throttle>=1.0.0 

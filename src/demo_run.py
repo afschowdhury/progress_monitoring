@@ -19,18 +19,15 @@ ic.configureOutput(includeContext=True, prefix="DEBUG -")
 
 GEMINI_API_KEY = os.getenv("GOOGLE_API_KEY")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-DAY_1_IMAGES_FOLDER = "/Users/afschowdhury/Code Local/crc/progress-monitoring/progress_monitoring/src/progress_monitoring/video_sampler/img_data/day1"  # Path to your construction site images
+WINDOWS_PATH_PREFIX = "/home/achowd6/CODES/crc/progress-monitoring/src/progress_monitoring/video_sampler/img_data"
+MAC_PATH_PREFIX = "/Users/afschowdhury/Code Local/crc/progress-monitoring/progress_monitoring/src/progress_monitoring/video_sampler/img_data"
 PROVIDER = "gemini"  # or "openai"
-DAY_2_IMAGES_FOLDER = "/Users/afschowdhury/Code Local/crc/progress-monitoring/progress_monitoring/src/progress_monitoring/video_sampler/img_data/day2"  # Path to your construction site images
-DAY_3_IMAGES_FOLDER = "/Users/afschowdhury/Code Local/crc/progress-monitoring/progress_monitoring/src/progress_monitoring/video_sampler/img_data/day3"  # Path to your construction site images
-DAY_4_IMAGES_FOLDER = "/Users/afschowdhury/Code Local/crc/progress-monitoring/progress_monitoring/src/progress_monitoring/video_sampler/img_data/day4"  # Path to your construction site images
-DAY_5_IMAGES_FOLDER = "/Users/afschowdhury/Code Local/crc/progress-monitoring/progress_monitoring/src/progress_monitoring/video_sampler/img_data/day5"  # Path to your construction site images
 
-# Create sample images folder if it doesn't exist
-Path(DAY_1_IMAGES_FOLDER).mkdir(exist_ok=True)
 
-print(f"Using provider: {PROVIDER}")
-print(f"Images folder: {DAY_1_IMAGES_FOLDER}")
+
+
+
+
 
 from progress_monitoring import ConstructionSiteAnalyzer, AnalysisConfig, ModelProvider
 import os
@@ -41,20 +38,29 @@ load_dotenv()
 GEMINI_API_KEY = os.getenv("GOOGLE_API_KEY")
 
 config = AnalysisConfig(
-    model_provider=ModelProvider.GEMINI,
-    api_key=GEMINI_API_KEY,
-    model_name="gemini-2.0-flash",
+    # model_provider=ModelProvider.GEMINI,
+    # api_key=GEMINI_API_KEY,
+    # model_name="gemini-2.0-flash",
     ### OPENAI 
-    # model_provider=ModelProvider.OPENAI,
-    # api_key=OPENAI_API_KEY,
-    # model_name="gpt-4o",
+    model_provider=ModelProvider.OPENAI,
+    api_key=OPENAI_API_KEY,
+    model_name="gpt-4.1-nano",
     memory_file_path="demo_memory.txt"
 )
+
+def get_images_folder(os_name, day_number):
+    if os_name == "win":
+        return f"{WINDOWS_PATH_PREFIX}/day{day_number}"
+    elif os_name == "mac":
+        return f"{MAC_PATH_PREFIX}/day{day_number}"
+    else:
+        raise ValueError(f"Unsupported OS: {os_name}")
+
+
 
 analyzer = ConstructionSiteAnalyzer(config)
 
 
-day_report = analyzer.analyze_single_day(DAY_3_IMAGES_FOLDER, 3,5)
+day_report = analyzer.analyze_single_day(get_images_folder('win', 1), 1,5)
 
 ic(day_report)
-

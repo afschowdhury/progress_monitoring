@@ -1,118 +1,141 @@
 """
 Main construction site analyzer that orchestrates all components.
 """
+
 import json
 import logging
 import os
 from datetime import datetime, timedelta
-from typing import Dict, Any, List
+from typing import Any, Dict, List
+
+from icecream import ic
 
 from .config import AnalysisConfig
-from .providers import create_ai_provider
 from .image_processor import ImageProcessor
 from .memory_manager import MemoryManager
 from .prompts import PromptManager
-from icecream import ic
+from .providers import create_ai_provider
+from .utils import ParallelImageProcessor, process_images_parallel
+
 ic.configureOutput(includeContext=True, prefix="DEBUG -")
 
 
 class ConstructionSiteAnalyzer:
     """Main construction site analyzer that orchestrates all components."""
-    
+
     def __init__(self, config: AnalysisConfig):
         self.config = config
         self.logger = self._setup_logging()
-        
+
         # Initialize components
         self.ai_provider = create_ai_provider(config)
         self.image_processor = ImageProcessor(config)
         self.memory_manager = MemoryManager(config.memory_file_path)
-        
+
         # Initialize prompt manager
         self.prompt_manager = PromptManager(config.prompt_settings.prompts_dir)
-    
+
     def _setup_logging(self) -> logging.Logger:
         """Setup logging configuration."""
         if self.config.enable_detailed_logging:
             logging.basicConfig(
                 level=logging.INFO,
-                format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+                format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
             )
         return logging.getLogger(self.__class__.__name__)
-    
-    def analyze_daily_progression(self, img_data_path: str, project_start_date: str = None) -> Dict[str, Any]:
+
+    def analyze_daily_progression(
+        self, img_data_path: str, project_start_date: str = None
+    ) -> Dict[str, Any]:
         """Analyze all day folders sequentially and generate reports for each day."""
         try:
             # Get all day folders and sort them
             day_folders = []
             if os.path.exists(img_data_path):
                 for item in os.listdir(img_data_path):
-                    if os.path.isdir(os.path.join(img_data_path, item)) and item.startswith('day'):
+                    if os.path.isdir(
+                        os.path.join(img_data_path, item)
+                    ) and item.startswith("day"):
                         day_folders.append(item)
-            
-            day_folders.sort(key=lambda x: int(x.replace('day', '')))
-            
+
+            day_folders.sort(key=lambda x: int(x.replace("day", "")))
+
             if not day_folders:
                 raise ValueError(f"No day folders found in {img_data_path}")
-            
+
             self.logger.info(f"Found {len(day_folders)} day folders: {day_folders}")
-            
+
             # Initialize memory
             memory_data = self.memory_manager.read_memory()
             if not memory_data.get("project_start_date"):
                 if project_start_date:
                     memory_data["project_start_date"] = project_start_date
                 else:
-                    memory_data["project_start_date"] = datetime.now().strftime("%Y-%m-%d")
-            
+                    memory_data["project_start_date"] = datetime.now().strftime(
+                        "%Y-%m-%d"
+                    )
+
             # Reset daily reports for fresh analysis
             memory_data["daily_reports"] = {}
             memory_data["total_days_analyzed"] = 0
-            
+
             all_daily_reports = {}
             previous_day_summary = ""
-            
+
             # Process each day
             for i, day_folder in enumerate(day_folders):
                 day_number = i + 1
                 day_path = os.path.join(img_data_path, day_folder)
-                
+
                 # Calculate analysis date (project start + day number - 1)
                 if project_start_date:
                     start_date = datetime.strptime(project_start_date, "%Y-%m-%d")
-                    analysis_date = (start_date + timedelta(days=i)).strftime("%Y-%m-%d")
+                    analysis_date = (start_date + timedelta(days=i)).strftime(
+                        "%Y-%m-%d"
+                    )
                 else:
                     analysis_date = f"Day-{day_number}"
-                
-                self.logger.info(f"Analyzing {day_folder} (Day {day_number}) for date {analysis_date}")
-                
+
+                self.logger.info(
+                    f"Analyzing {day_folder} (Day {day_number}) for date {analysis_date}"
+                )
+
                 # Analyze this day
                 daily_report = self._analyze_single_day(
-                    day_path, day_number, len(day_folders), 
-                    analysis_date, memory_data, previous_day_summary
+                    day_path,
+                    day_number,
+                    len(day_folders),
+                    analysis_date,
+                    memory_data,
+                    previous_day_summary,
                 )
-                
+
                 # Update memory with this day's report
                 memory_data = self.memory_manager.update_daily_report(
-                    memory_data, analysis_date, 
-                    daily_report["daily_description"], 
-                    daily_report["images_processed"]
+                    memory_data,
+                    analysis_date,
+                    daily_report["daily_description"],
+                    daily_report["images_processed"],
                 )
-                
+
                 # Update memory with progress data
                 memory_data = self._update_memory_with_progress(
                     memory_data, daily_report["progress_report"], analysis_date
                 )
-                
+
                 # Store the report
                 all_daily_reports[f"day_{day_number}"] = daily_report
-                
+
                 # Update previous day summary for next iteration
-                previous_day_summary = daily_report["daily_description"][:500] + "..." if len(daily_report["daily_description"]) > 500 else daily_report["daily_description"]
-            
+                previous_day_summary = (
+                    daily_report["daily_description"][:500] + "..."
+                    if len(daily_report["daily_description"]) > 500
+                    else daily_report["daily_description"]
+                )
+
             # Save updated memory
             self.memory_manager.write_memory(memory_data)
-            
+
             # Return comprehensive results
             return {
                 "analysis_type": "daily_progression",
@@ -123,44 +146,63 @@ class ConstructionSiteAnalyzer:
                     "project_start_date": memory_data["project_start_date"],
                     "total_days_analyzed": memory_data["total_days_analyzed"],
                     "current_phase": memory_data["current_phase"],
-                    "overall_progress_percentage": memory_data["overall_progress_percentage"],
-                    "key_milestones": memory_data["key_milestones"]
+                    "overall_progress_percentage": memory_data[
+                        "overall_progress_percentage"
+                    ],
+                    "key_milestones": memory_data["key_milestones"],
                 },
-                "status": "success"
+                "status": "success",
             }
-            
+
         except Exception as e:
             self.logger.error(f"Daily progression analysis failed: {e}")
             return {
                 "analysis_type": "daily_progression",
                 "error": str(e),
-                "status": "failed"
+                "status": "failed",
             }
-    
-    def _analyze_single_day(self, day_path: str, day_number: int, total_days: int, 
-                           analysis_date: str, memory_data: Dict[str, Any], 
-                           previous_day_summary: str) -> Dict[str, Any]:
-        """Analyze a single day's images."""
+
+    def _analyze_single_day(
+        self,
+        day_path: str,
+        day_number: int,
+        total_days: int,
+        analysis_date: str,
+        memory_data: Dict[str, Any],
+        previous_day_summary: str,
+    ) -> Dict[str, Any]:
+        """Analyze a single day's images with parallel processing for large sets."""
         try:
             # Process images for this day
             image_files = self.image_processor.get_image_files(day_path)
             prepared_images = self.image_processor.prepare_images(image_files)
-            
+
             if not prepared_images:
-                raise ValueError(f"No images could be prepared for analysis in {day_path}")
-            
+                raise ValueError(
+                    f"No images could be prepared for analysis in {day_path}"
+                )
+
             # Create day-specific analysis prompt
             prompt = self._create_daily_comparison_prompt(
                 memory_data, day_number, total_days, analysis_date, previous_day_summary
             )
-            
-            # Analyze with AI
-            self.logger.info(f"Analyzing Day {day_number} with {self.config.model_provider.value}")
-            analysis_text = self.ai_provider.analyze_images(prepared_images, prompt)
-            
+
+            # Choose processing method based on image count
+            if len(prepared_images) > 15:  # Use parallel processing for large sets
+                self.logger.info(
+                    f"Using parallel processing for Day {day_number} with {len(prepared_images)} images"
+                )
+                analysis_text = self._analyze_images_parallel(prepared_images, prompt)
+            else:
+                # Use standard processing for smaller sets
+                self.logger.info(
+                    f"Analyzing Day {day_number} with {self.config.model_provider.value}"
+                )
+                analysis_text = self.ai_provider.analyze_images(prepared_images, prompt)
+
             # Generate structured progress report
             progress_data = self._generate_progress_report(analysis_text, memory_data)
-            
+
             # Format results for this day
             return {
                 "day_number": day_number,
@@ -168,54 +210,94 @@ class ConstructionSiteAnalyzer:
                 "images_processed": len(image_files),
                 "daily_description": analysis_text,
                 "progress_report": progress_data,
-                "status": "success"
+                "status": "success",
             }
-            
+
         except Exception as e:
             self.logger.error(f"Analysis failed for day {day_number}: {e}")
             return {
                 "day_number": day_number,
                 "analysis_date": analysis_date,
                 "error": str(e),
-                "status": "failed"
+                "status": "failed",
             }
-    
-    def _create_daily_comparison_prompt(self, memory_data: Dict[str, Any], day_number: int, 
-                                      total_days: int, analysis_date: str, 
-                                      previous_day_summary: str) -> str:
+
+    def _analyze_images_parallel(
+        self, images: List[Dict[str, Any]], prompt: str
+    ) -> str:
+        """Analyze images using parallel processing with rate limiting."""
+        try:
+            # Use the parallel processing utility
+            analysis_text = process_images_parallel(
+                images=images,
+                prompt=prompt,
+                ai_provider=self.ai_provider,
+                config=self.config,
+                max_workers=3,
+                batch_size=10,
+            )
+            return analysis_text
+        except Exception as e:
+            self.logger.error(
+                f"Parallel processing failed, falling back to sequential: {e}"
+            )
+            # Fallback to sequential processing
+            return self.ai_provider.analyze_images(images, prompt)
+
+    def _create_daily_comparison_prompt(
+        self,
+        memory_data: Dict[str, Any],
+        day_number: int,
+        total_days: int,
+        analysis_date: str,
+        previous_day_summary: str,
+    ) -> str:
         """Create daily comparison prompt using prompt manager."""
         # Determine which prompt to use based on provider
         prompt_name = "daily_comparison_analysis"
         if self.config.model_provider.value == "openai":
             prompt_name = "daily_comparison_analysis_openai"
-        
+
         # Prepare variables for prompt template
         variables = {
             "day_number": day_number,
             "total_days": total_days,
             "analysis_date": analysis_date,
-            "current_phase": memory_data.get('current_phase', 'Unknown'),
-            "overall_progress_percentage": memory_data.get('overall_progress_percentage', 0),
-            "project_start_date": memory_data.get('project_start_date', 'Unknown'),
-            "previous_day_summary": previous_day_summary if previous_day_summary else "This is the first day of analysis."
+            "current_phase": memory_data.get("current_phase", "Unknown"),
+            "overall_progress_percentage": memory_data.get(
+                "overall_progress_percentage", 0
+            ),
+            "project_start_date": memory_data.get("project_start_date", "Unknown"),
+            "previous_day_summary": (
+                previous_day_summary
+                if previous_day_summary
+                else "This is the first day of analysis."
+            ),
         }
-        
+
         # Render prompt using prompt manager
         prompt = self.prompt_manager.render_prompt(prompt_name, variables)
         ic(f"day {day_number} prompt: {prompt}")
-        
+
         if prompt is None:
             # Fallback to hardcoded prompt if template not found
-            self.logger.warning(f"Daily comparison prompt template '{prompt_name}' not found, using fallback")
+            self.logger.warning(
+                f"Daily comparison prompt template '{prompt_name}' not found, using fallback"
+            )
             prompt = self._create_fallback_daily_prompt(
                 memory_data, day_number, total_days, analysis_date, previous_day_summary
             )
-        
+
         return prompt
-    
-    def _create_fallback_daily_prompt(self, memory_data: Dict[str, Any], day_number: int, 
-                                    total_days: int, analysis_date: str, 
-                                    previous_day_summary: str) -> str:
+
+    def _create_fallback_daily_prompt(
+        self,
+        memory_data: Dict[str, Any],
+        day_number: int,
+        total_days: int,
+        analysis_date: str,
+        previous_day_summary: str,
+    ) -> str:
         """Create fallback daily comparison prompt if template is not available."""
         return f"""
 INSTRUCTIONS: Provide a direct, professional construction analysis for Day {day_number}. Do not include conversational phrases or commentary. Start immediately with factual observations using the structure below.
@@ -270,83 +352,92 @@ Format your response using the above headings with concise, factual content unde
         """Analyze construction site images and generate comprehensive report."""
         try:
             today = datetime.now().strftime("%Y-%m-%d")
-            
+
             # Read existing memory
             memory_data = self.memory_manager.read_memory()
             if not memory_data.get("project_start_date"):
                 memory_data["project_start_date"] = today
-            
+
             # Process images
             image_files = self.image_processor.get_image_files(folder_path)
             prepared_images = self.image_processor.prepare_images(image_files)
-            
+
             if not prepared_images:
                 raise ValueError("No images could be prepared for analysis")
-            
+
             # Create analysis prompt using prompt manager
             prompt = self._create_analysis_prompt(memory_data, today)
-            
+
             # Analyze with AI
             self.logger.info(f"Analyzing with {self.config.model_provider.value}")
             analysis_text = self.ai_provider.analyze_images(prepared_images, prompt)
-            
+
             # Update memory with analysis
             memory_data = self.memory_manager.update_daily_report(
                 memory_data, today, analysis_text, len(image_files)
             )
-            
+
             # Generate structured progress report
             progress_data = self._generate_progress_report(analysis_text, memory_data)
-            
+
             # Update memory with progress data
-            memory_data = self._update_memory_with_progress(memory_data, progress_data, today)
-            
+            memory_data = self._update_memory_with_progress(
+                memory_data, progress_data, today
+            )
+
             # Save updated memory
             self.memory_manager.write_memory(memory_data)
-            
+
             # Return results
-            return self._format_results(today, len(image_files), analysis_text, 
-                                      progress_data, memory_data)
-            
+            return self._format_results(
+                today, len(image_files), analysis_text, progress_data, memory_data
+            )
+
         except Exception as e:
             self.logger.error(f"Analysis failed: {e}")
             return {
                 "analysis_date": datetime.now().strftime("%Y-%m-%d"),
                 "error": str(e),
-                "status": "failed"
+                "status": "failed",
             }
-    
+
     def _create_analysis_prompt(self, memory_data: Dict[str, Any], today: str) -> str:
         """Create comprehensive analysis prompt using prompt manager."""
         # Build context from memory
         context = self._build_context_from_memory(memory_data)
-        
+
         # Determine which prompt to use based on provider
         prompt_name = self.config.prompt_settings.default_analysis_prompt
         if self.config.model_provider.value == "openai":
             prompt_name = f"{prompt_name}_openai"
-        
+
         # Prepare variables for prompt template
         variables = {
             "analysis_date": today,
-            "current_phase": memory_data.get('current_phase', 'Unknown'),
-            "total_days_analyzed": memory_data.get('total_days_analyzed', 0),
-            "overall_progress_percentage": memory_data.get('overall_progress_percentage', 0),
-            "project_start_date": memory_data.get('project_start_date', 'Unknown'),
-            "historical_context": context
+            "current_phase": memory_data.get("current_phase", "Unknown"),
+            "total_days_analyzed": memory_data.get("total_days_analyzed", 0),
+            "overall_progress_percentage": memory_data.get(
+                "overall_progress_percentage", 0
+            ),
+            "project_start_date": memory_data.get("project_start_date", "Unknown"),
+            "historical_context": context,
         }
-        
+
         # Render prompt using prompt manager
         prompt = self.prompt_manager.render_prompt(prompt_name, variables)
-        
+
         if prompt is None:
             # Fallback to hardcoded prompt if template not found
-            self.logger.warning(f"Prompt template '{prompt_name}' not found, using fallback")
+            self.logger.warning(
+                f"Prompt template '{prompt_name}' not found, using fallback"
+            )
             prompt = self._create_fallback_prompt(memory_data, today, context)
-        
+
         return prompt
-    
-    def _create_fallback_prompt(self, memory_data: Dict[str, Any], today: str, context: str) -> str:
+
+    def _create_fallback_prompt(
+        self, memory_data: Dict[str, Any], today: str, context: str
+    ) -> str:
         """Create fallback prompt if template is not available."""
         return f"""
 INSTRUCTIONS: Provide a direct, professional construction site analysis. Do not include conversational phrases, greetings, or commentary. Start immediately with factual observations using the structure below.
@@ -391,7 +482,7 @@ Compare with previous progress using concrete observations and measurable indica
 
 Format your response using the above headings with concise, factual content under each section.
 """
-    
+
     def _build_context_from_memory(self, memory_data: Dict[str, Any]) -> str:
         """Build context string from memory data."""
         context = ""
@@ -401,47 +492,55 @@ Format your response using the above headings with concise, factual content unde
             for date, report in recent_reports:
                 context += f"- {date}: {report.get('summary', 'No summary')}\n"
         return context
-    
-    def _generate_progress_report(self, analysis_text: str, memory_data: Dict[str, Any]) -> Dict[str, Any]:
+
+    def _generate_progress_report(
+        self, analysis_text: str, memory_data: Dict[str, Any]
+    ) -> Dict[str, Any]:
         """Generate structured progress report using prompt manager."""
         # Determine which prompt to use based on provider
         prompt_name = self.config.prompt_settings.default_progress_prompt
         if self.config.model_provider.value == "openai":
             prompt_name = f"{prompt_name}_openai"
-        
+
         # Prepare variables for prompt template
         variables = {
             "analysis_text": analysis_text,
-            "total_days_analyzed": memory_data.get('total_days_analyzed', 0),
-            "previous_progress": memory_data.get('overall_progress_percentage', 0),
-            "current_phase": memory_data.get('current_phase', 'Unknown')
+            "total_days_analyzed": memory_data.get("total_days_analyzed", 0),
+            "previous_progress": memory_data.get("overall_progress_percentage", 0),
+            "current_phase": memory_data.get("current_phase", "Unknown"),
         }
-        
+
         # Render prompt using prompt manager
         progress_prompt = self.prompt_manager.render_prompt(prompt_name, variables)
         ic(f"Progress prompt: {progress_prompt}")
-        
+
         if progress_prompt is None:
             # Fallback to hardcoded prompt if template not found
-            self.logger.warning(f"Progress prompt template '{prompt_name}' not found, using fallback")
-            progress_prompt = self._create_fallback_progress_prompt(analysis_text, memory_data)
-        
+            self.logger.warning(
+                f"Progress prompt template '{prompt_name}' not found, using fallback"
+            )
+            progress_prompt = self._create_fallback_progress_prompt(
+                analysis_text, memory_data
+            )
+
         try:
             # Log the prompt being sent
             self.logger.info("Sending progress assessment prompt to AI provider...")
             ic(f"Progress prompt length: {len(progress_prompt)}")
-            
+
             response = self.ai_provider.generate_structured_response(progress_prompt)
             ic(f"Progress prompt response: {response}")
-            
+
             # Additional validation before JSON parsing
             if not response or response.strip() == "":
-                self.logger.warning("AI provider returned empty response for progress prompt")
+                self.logger.warning(
+                    "AI provider returned empty response for progress prompt"
+                )
                 return self._get_default_progress_data(memory_data)
-            
+
             # Try to extract JSON if response contains additional text
             response_text = response.strip()
-            
+
             # Look for JSON block if response has markdown formatting
             if "```json" in response_text:
                 json_start = response_text.find("```json") + 7
@@ -451,25 +550,31 @@ Format your response using the above headings with concise, factual content unde
             elif response_text.startswith("```") and response_text.endswith("```"):
                 # Remove markdown code block formatting
                 response_text = response_text[3:-3].strip()
-            
+
             # Find JSON object boundaries if response has extra text
             json_start = response_text.find("{")
             json_end = response_text.rfind("}")
             if json_start != -1 and json_end != -1 and json_end > json_start:
-                response_text = response_text[json_start:json_end + 1]
-            
+                response_text = response_text[json_start : json_end + 1]
+
             ic(f"Cleaned progress response: {response_text}")
             return json.loads(response_text)
-            
+
         except json.JSONDecodeError as json_error:
             self.logger.warning(f"JSON parsing failed for progress data: {json_error}")
-            self.logger.warning(f"Raw response was: {response[:200]}..." if len(response) > 200 else f"Raw response was: {response}")
+            self.logger.warning(
+                f"Raw response was: {response[:200]}..."
+                if len(response) > 200
+                else f"Raw response was: {response}"
+            )
             return self._get_default_progress_data(memory_data)
         except Exception as e:
             self.logger.warning(f"Failed to generate progress data: {e}")
             return self._get_default_progress_data(memory_data)
-    
-    def _create_fallback_progress_prompt(self, analysis_text: str, memory_data: Dict[str, Any]) -> str:
+
+    def _create_fallback_progress_prompt(
+        self, analysis_text: str, memory_data: Dict[str, Any]
+    ) -> str:
         """Create fallback progress prompt if template is not available."""
         return f"""
 INSTRUCTIONS: Generate structured progress assessment from the analysis below. Respond with ONLY valid JSON - no explanatory text, comments, or markdown formatting.
@@ -505,37 +610,51 @@ Respond with ONLY this exact JSON format:
 }}
 
 CRITICAL: Start immediately with {{ and end with }}. No other text."""
-    
+
     def _get_default_progress_data(self, memory_data: Dict[str, Any]) -> Dict[str, Any]:
         """Get default progress data structure."""
         return {
             "current_phase": memory_data.get("current_phase", "Analysis in Progress"),
-            "overall_progress_percentage": memory_data.get("overall_progress_percentage", 0),
+            "overall_progress_percentage": memory_data.get(
+                "overall_progress_percentage", 0
+            ),
             "daily_progress_percentage": 0,
             "key_accomplishments": [],
             "identified_issues": [],
             "next_phase_indicators": [],
-            "estimated_timeline_status": "Unknown", 
-            "critical_path_items": []
+            "estimated_timeline_status": "Unknown",
+            "critical_path_items": [],
         }
-    
-    def _update_memory_with_progress(self, memory_data: Dict[str, Any], 
-                                   progress_data: Dict[str, Any], today: str) -> Dict[str, Any]:
+
+    def _update_memory_with_progress(
+        self, memory_data: Dict[str, Any], progress_data: Dict[str, Any], today: str
+    ) -> Dict[str, Any]:
         """Update memory with progress data."""
-        memory_data["current_phase"] = progress_data.get("current_phase", memory_data.get("current_phase"))
-        memory_data["overall_progress_percentage"] = progress_data.get("overall_progress_percentage", 0)
-        
+        memory_data["current_phase"] = progress_data.get(
+            "current_phase", memory_data.get("current_phase")
+        )
+        memory_data["overall_progress_percentage"] = progress_data.get(
+            "overall_progress_percentage", 0
+        )
+
         # Add milestone if significant progress
         memory_data = self.memory_manager.add_milestone(
-            memory_data, today, 
+            memory_data,
+            today,
             f"Progress in {progress_data.get('current_phase', 'construction')}",
-            progress_data.get("daily_progress_percentage", 0)
+            progress_data.get("daily_progress_percentage", 0),
         )
-        
+
         return memory_data
-    
-    def _format_results(self, today: str, images_count: int, analysis_text: str,
-                       progress_data: Dict[str, Any], memory_data: Dict[str, Any]) -> Dict[str, Any]:
+
+    def _format_results(
+        self,
+        today: str,
+        images_count: int,
+        analysis_text: str,
+        progress_data: Dict[str, Any],
+        memory_data: Dict[str, Any],
+    ) -> Dict[str, Any]:
         """Format final results."""
         return {
             "analysis_date": today,
@@ -547,73 +666,91 @@ CRITICAL: Start immediately with {{ and end with }}. No other text."""
                 "project_start_date": memory_data["project_start_date"],
                 "total_days_analyzed": memory_data["total_days_analyzed"],
                 "current_phase": memory_data["current_phase"],
-                "overall_progress_percentage": memory_data["overall_progress_percentage"],
-                "recent_milestones": memory_data["key_milestones"][-5:] if memory_data["key_milestones"] else []
+                "overall_progress_percentage": memory_data[
+                    "overall_progress_percentage"
+                ],
+                "recent_milestones": (
+                    memory_data["key_milestones"][-5:]
+                    if memory_data["key_milestones"]
+                    else []
+                ),
             },
-            "status": "success"
+            "status": "success",
         }
 
-    def analyze_single_day(self, image_folder_path: str, day_number: int, total_days: int) -> Dict[str, Any]:
+    def analyze_single_day(
+        self, image_folder_path: str, day_number: int, total_days: int
+    ) -> Dict[str, Any]:
         """
         Analyze a specific day's construction progress given only the image folder path and day number.
-        
+
         Args:
             image_folder_path: Path to the folder containing images for this specific day
             day_number: The day number in the project sequence
-            
+
         Returns:
             Dict containing analysis results and updated memory state
         """
         try:
             # Read existing memory
             memory_data = self.memory_manager.read_memory()
-            
+
             # Calculate analysis date
             analysis_date = self._calculate_analysis_date(memory_data, day_number)
-            
+
             # Get previous day analysis from memory if available
-            previous_day_analysis = self._get_previous_day_summary(memory_data, day_number)
-            
-            self.logger.info(f"Analyzing single day: Day {day_number} at {image_folder_path}")
-            
+            previous_day_analysis = self._get_previous_day_summary(
+                memory_data, day_number
+            )
+
+            self.logger.info(
+                f"Analyzing single day: Day {day_number} at {image_folder_path}"
+            )
+
             # Process images for this day
             image_files = self.image_processor.get_image_files(image_folder_path)
             prepared_images = self.image_processor.prepare_images(image_files)
-            
+
             if not prepared_images:
-                raise ValueError(f"No images could be prepared for analysis in {image_folder_path}")
-            
+                raise ValueError(
+                    f"No images could be prepared for analysis in {image_folder_path}"
+                )
+
             # Create day-specific analysis prompt
             prompt = self._create_daily_comparison_prompt(
-                memory_data, day_number, total_days, analysis_date, previous_day_analysis
+                memory_data,
+                day_number,
+                total_days,
+                analysis_date,
+                previous_day_analysis,
             )
-            
+
             # Analyze with AI
-            self.logger.info(f"Analyzing Day {day_number} with {self.config.model_provider.value}")
+            self.logger.info(
+                f"Analyzing Day {day_number} with {self.config.model_provider.value}"
+            )
             analysis_text = self.ai_provider.analyze_images(prepared_images, prompt)
-            
+
             # Generate structured progress report
             progress_data = self._generate_progress_report(analysis_text, memory_data)
             ic(f"Progress data MAIN: {progress_data}")
             # Update memory with this day's report
             memory_data = self.memory_manager.update_daily_report(
-                memory_data, analysis_date, 
-                analysis_text, 
-                len(image_files)
+                memory_data, analysis_date, analysis_text, len(image_files)
             )
-            
+
             # Update memory with progress data
             memory_data = self._update_memory_with_progress(
                 memory_data, progress_data, analysis_date
             )
-            
+
             # Update total days analyzed if this is a new maximum
-            if day_number > memory_data.get('total_days_analyzed', 0):
-                memory_data['total_days_analyzed'] = day_number
-            
+            if day_number > memory_data.get("total_days_analyzed", 0):
+                memory_data["total_days_analyzed"] = day_number
+
             # Save updated memory
             self.memory_manager.write_memory(memory_data)
-            
+
             # Format and return results
             return {
                 "analysis_type": "single_day",
@@ -627,46 +764,60 @@ CRITICAL: Start immediately with {{ and end with }}. No other text."""
                     "project_start_date": memory_data["project_start_date"],
                     "total_days_analyzed": memory_data["total_days_analyzed"],
                     "current_phase": memory_data["current_phase"],
-                    "overall_progress_percentage": memory_data["overall_progress_percentage"],
-                    "recent_milestones": memory_data["key_milestones"][-5:] if memory_data["key_milestones"] else []
+                    "overall_progress_percentage": memory_data[
+                        "overall_progress_percentage"
+                    ],
+                    "recent_milestones": (
+                        memory_data["key_milestones"][-5:]
+                        if memory_data["key_milestones"]
+                        else []
+                    ),
                 },
-                "status": "success"
+                "status": "success",
             }
-            
+
         except Exception as e:
             self.logger.error(f"Single day analysis failed for Day {day_number}: {e}")
             return {
                 "analysis_type": "single_day",
                 "day_number": day_number,
                 "error": str(e),
-                "status": "failed"
+                "status": "failed",
             }
-    
-    def _calculate_analysis_date(self, memory_data: Dict[str, Any], day_number: int) -> str:
+
+    def _calculate_analysis_date(
+        self, memory_data: Dict[str, Any], day_number: int
+    ) -> str:
         """Calculate the analysis date based on project start date and day number."""
         project_start_date = memory_data.get("project_start_date")
-        
+
         if project_start_date:
             try:
                 start_date = datetime.strptime(project_start_date, "%Y-%m-%d")
-                analysis_date = (start_date + timedelta(days=day_number - 1)).strftime("%Y-%m-%d")
+                analysis_date = (start_date + timedelta(days=day_number - 1)).strftime(
+                    "%Y-%m-%d"
+                )
                 return analysis_date
             except ValueError:
-                self.logger.warning(f"Invalid project start date format: {project_start_date}")
-        
+                self.logger.warning(
+                    f"Invalid project start date format: {project_start_date}"
+                )
+
         # Fallback to current date if no valid start date
         return datetime.now().strftime("%Y-%m-%d")
-    
-    def _get_previous_day_summary(self, memory_data: Dict[str, Any], day_number: int) -> str:
+
+    def _get_previous_day_summary(
+        self, memory_data: Dict[str, Any], day_number: int
+    ) -> str:
         """Get analysis from the previous day from memory if available."""
         if day_number <= 1:
             return ""
-        
+
         # Calculate the previous day's date
         previous_day_date = self._calculate_analysis_date(memory_data, day_number - 1)
-        
+
         daily_reports = memory_data.get("daily_reports", {})
-        
+
         # Look for the specific previous day first
         if previous_day_date in daily_reports:
             report = daily_reports[previous_day_date]
@@ -675,12 +826,16 @@ CRITICAL: Start immediately with {{ and end with }}. No other text."""
                 full_analysis = report.get("full_analysis", "")
                 if full_analysis:
                     # Return a meaningful portion of the full analysis for context
-                    return full_analysis[:1500] + "..." if len(full_analysis) > 1500 else full_analysis
-                
+                    return (
+                        full_analysis[:1500] + "..."
+                        if len(full_analysis) > 1500
+                        else full_analysis
+                    )
+
                 # Fallback to summary if full_analysis not available
                 summary = report.get("summary", "")
                 return summary[:500] + "..." if len(summary) > 500 else summary
-        
+
         # If exact previous day not found, look for the most recent analysis
         sorted_dates = sorted(daily_reports.keys(), reverse=True)
         for date in sorted_dates:
@@ -689,11 +844,15 @@ CRITICAL: Start immediately with {{ and end with }}. No other text."""
                 # Use full_analysis for better context
                 full_analysis = report.get("full_analysis", "")
                 if full_analysis:
-                    return full_analysis[:1500] + "..." if len(full_analysis) > 1500 else full_analysis
-                
+                    return (
+                        full_analysis[:1500] + "..."
+                        if len(full_analysis) > 1500
+                        else full_analysis
+                    )
+
                 # Fallback to summary
                 summary = report.get("summary", "")
                 return summary[:500] + "..." if len(summary) > 500 else summary
-        
+
         # If no previous day found, return empty string
-        return "" 
+        return ""
