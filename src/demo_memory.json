@@ -251,8 +251,60 @@
       },
       "timestamp": "2025-07-16T14:34:09.056023",
       "record_type": "progress_report"
+    },
+    {
+      "id": "4cb9f7e3-cb23-4a61-a441-0c83ac49e4e8",
+      "date": "2025-07-17",
+      "date_timestamp": 1752728400.0,
+      "day_number": 1,
+      "image_folder_path": "/home/achowd6/CODES/crc/progress-monitoring/src/progress_monitoring/video_sampler/img_data/day1",
+      "analysis_content": "**1. DAILY ACTIVITIES**\n- Personnel engaged in a dry-stack layout of concrete masonry units (CMUs) on an interior concrete slab.\n- CMUs were moved from a palletized stack and arranged to form a single-course, rectangular perimeter.\n- The activity involved two individuals: one primarily placing the blocks, the other supervising and assisting.\n\n**2. PROGRESS ACCOMPLISHED**\n- A first-course, unmortared mock-up of a masonry wall foundation has been completed.\n- The layout consists of approximately 24 standard 8x8x16 CMUs.\n\n**3. KEY OBSERVATIONS**\n- The work is being performed in a controlled workshop/training environment, not on an active construction site.\n- No mortar, string lines, or leveling tools are being used, indicating a layout and planning exercise rather than permanent construction.\n- The layout forms a rectangular footprint with defined corners.\n\n**4. SAFETY ASSESSMENT**\n- **Violations:** Lack of appropriate Personal Protective Equipment (PPE). Neither individual is wearing safety glasses, gloves, or protective footwear (one individual is wearing sandals). This is a violation of standard safety protocols for handling masonry materials.\n- **Concerns:** Potential for back or hand injuries due to improper lifting techniques or lack of hand protection when handling heavy, abrasive blocks.\n\n**5. EQUIPMENT & PERSONNEL**\n- **Personnel:** Two individuals are present.\n- **Materials:** Standard concrete masonry units.\n- **Equipment:** No tools are in use for the observed activity. Scaffolding, a table saw, and other workshop tools are present in the background but are not being utilized.\n\n**6. QUALITY CONTROL**\n- As this is a dry layout exercise, standard quality control measures for masonry (e.g., mortar joint consistency, plumb, level) are not applicable.\n- The focus of the task appears to be on correct block orientation and pattern for a first course. The blocks are placed loosely to define the intended footprint.\n\n**7. WEATHER IMPACT**\n- Work is being conducted indoors; there is no impact from weather conditions.\n\n**8. TIMELINE STATUS**\n- The activity is consistent with a pre-construction phase, such as training or a physical mock-up.\n- Given the 0% overall progress, this task does not represent advancement on a project construction schedule.\n\n**COMPARATIVE ANALYSIS**\n- **Previous State:** The workspace floor was clear, with CMUs stacked on a pallet to the side.\n- **Current State:** A single-course rectangular layout of approximately 24 CMUs has been established on the floor.\n- **Measurable Indicators:** Progress is measured by the transition from a zero-block layout to a completed first-course mock-up. The physical footprint of the planned structure is now visually defined on the slab.",
+      "analysis_summary": "**1. DAILY ACTIVITIES**\n- Personnel engaged in a dry-stack layout of concrete masonry units (CMUs) on an interior concrete slab.\n- CMUs were moved from a palletized stack and arranged to form a single-course, rectangular perimeter.\n- The activity involved two individuals: one primarily placing the blocks, the other supervising and assisting.\n\n**2. PROGRESS ACCOMPLISHED**\n- A first-course, unmortared mock-up of a masonry wall foundation has been completed.\n- The layout consists of approximately 2...",
+      "images_count": 6,
+      "config_info": {
+        "provider": "gemini",
+        "model_name": "gemini-2.5-pro",
+        "analysis_prompt_used": "image_analysis_gemini",
+        "progress_prompt_used": "progress_assessment",
+        "temperature": 0.7,
+        "max_tokens": 4000,
+        "generation_timestamp": "2025-07-17T13:02:52.315873"
+      },
+      "timestamp": "2025-07-17T13:02:52.316110",
+      "record_type": "analysis_report"
+    },
+    {
+      "id": "2472a542-d6c5-45a3-86fa-61771b8317e2",
+      "date": "2025-07-17",
+      "date_timestamp": 1752728400.0,
+      "day_number": 1,
+      "image_folder_path": "/home/achowd6/CODES/crc/progress-monitoring/src/progress_monitoring/video_sampler/img_data/day1",
+      "analysis_content": "**1. DAILY ACTIVITIES**\n- Personnel engaged in a dry-stack layout of concrete masonry units (CMUs) on an interior concrete slab.\n- CMUs were moved from a palletized stack and arranged to form a single-course, rectangular perimeter.\n- The activity involved two individuals: one primarily placing the blocks, the other supervising and assisting.\n\n**2. PROGRESS ACCOMPLISHED**\n- A first-course, unmortared mock-up of a masonry wall foundation has been completed.\n- The layout consists of approximately 24 standard 8x8x16 CMUs.\n\n**3. KEY OBSERVATIONS**\n- The work is being performed in a controlled workshop/training environment, not on an active construction site.\n- No mortar, string lines, or leveling tools are being used, indicating a layout and planning exercise rather than permanent construction.\n- The layout forms a rectangular footprint with defined corners.\n\n**4. SAFETY ASSESSMENT**\n- **Violations:** Lack of appropriate Personal Protective Equipment (PPE). Neither individual is wearing safety glasses, gloves, or protective footwear (one individual is wearing sandals). This is a violation of standard safety protocols for handling masonry materials.\n- **Concerns:** Potential for back or hand injuries due to improper lifting techniques or lack of hand protection when handling heavy, abrasive blocks.\n\n**5. EQUIPMENT & PERSONNEL**\n- **Personnel:** Two individuals are present.\n- **Materials:** Standard concrete masonry units.\n- **Equipment:** No tools are in use for the observed activity. Scaffolding, a table saw, and other workshop tools are present in the background but are not being utilized.\n\n**6. QUALITY CONTROL**\n- As this is a dry layout exercise, standard quality control measures for masonry (e.g., mortar joint consistency, plumb, level) are not applicable.\n- The focus of the task appears to be on correct block orientation and pattern for a first course. The blocks are placed loosely to define the intended footprint.\n\n**7. WEATHER IMPACT**\n- Work is being conducted indoors; there is no impact from weather conditions.\n\n**8. TIMELINE STATUS**\n- The activity is consistent with a pre-construction phase, such as training or a physical mock-up.\n- Given the 0% overall progress, this task does not represent advancement on a project construction schedule.\n\n**COMPARATIVE ANALYSIS**\n- **Previous State:** The workspace floor was clear, with CMUs stacked on a pallet to the side.\n- **Current State:** A single-course rectangular layout of approximately 24 CMUs has been established on the floor.\n- **Measurable Indicators:** Progress is measured by the transition from a zero-block layout to a completed first-course mock-up. The physical footprint of the planned structure is now visually defined on the slab.",
+      "analysis_summary": "**1. DAILY ACTIVITIES**\n- Personnel engaged in a dry-stack layout of concrete masonry units (CMUs) on an interior concrete slab.\n- CMUs were moved from a palletized stack and arranged to form a single-course, rectangular perimeter.\n- The activity involved two individuals: one primarily placing the blocks, the other supervising and assisting.\n\n**2. PROGRESS ACCOMPLISHED**\n- A first-course, unmortared mock-up of a masonry wall foundation has been completed.\n- The layout consists of approximately 2...",
+      "progress_report": {
+        "current_phase": "Initiation",
+        "overall_progress_percentage": 0,
+        "daily_progress_percentage": 0,
+        "key_accomplishments": [],
+        "identified_issues": [],
+        "next_phase_indicators": [],
+        "estimated_timeline_status": "On Schedule",
+        "critical_path_items": []
+      },
+      "progress_summary": "{\n  \"current_phase\": \"Initiation\",\n  \"overall_progress_percentage\": 0,\n  \"daily_progress_percentage\": 0,\n  \"key_accomplishments\": [],\n  \"identified_issues\": [],\n  \"next_phase_indicators\": [],\n  \"estimated_timeline_status\": \"On Schedule\",\n  \"critical_path_items\": []\n}",
+      "config_info": {
+        "provider": "gemini",
+        "model_name": "gemini-2.5-pro",
+        "analysis_prompt_used": "image_analysis_gemini",
+        "progress_prompt_used": "progress_assessment",
+        "temperature": 0.7,
+        "max_tokens": 4000,
+        "generation_timestamp": "2025-07-17T13:02:52.315873"
+      },
+      "timestamp": "2025-07-17T13:02:53.019031",
+      "record_type": "progress_report"
     }
   ],
-  "last_updated": "2025-07-16T14:34:09.106179",
-  "total_records": 10
+  "last_updated": "2025-07-17T13:02:53.098732",
+  "total_records": 12
 }

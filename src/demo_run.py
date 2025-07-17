@@ -225,7 +225,7 @@ def main():
     print("=" * 60)
     
     # Configuration - you can change these
-    day_number = 2
+    day_number = 1
     total_days = 5
     provider = "gemini"
     

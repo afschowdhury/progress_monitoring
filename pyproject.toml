@@ -17,7 +17,9 @@ dependencies = [
     "qdrant-client (>=1.11.0,<2.0.0)",
     "sentence-transformers (>=3.0.0,<4.0.0)",
     "icecream (>=2.1.0,<3.0.0)",
-    "toml (>=0.10.0,<1.0.0)"
+    "toml (>=0.10.0,<1.0.0)",
+    "google-adk",
+    "chainlit"
 ]
 
 [project.optional-dependencies]
