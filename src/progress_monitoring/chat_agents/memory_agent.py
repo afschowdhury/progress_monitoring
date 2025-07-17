@@ -1,6 +1,6 @@
 import asyncio
 
-from google.adk.agents import Agent
+from google.adk.agents import Agent, ParallelAgent
 from google.adk.agents.invocation_context import InvocationContext
 from pydantic import PrivateAttr
 
@@ -121,12 +121,11 @@ class SimpleInteractionAgent(Agent):
         return "I'm here to help! Please ask your question about the project."
 
 
-class RAGAgent(Agent):
+class RAGAgent(MemoryAgent):
     """
     Retrieval-Augmented Generation (RAG) agent that retrieves relevant context from Qdrant and uses Gemini LLM to answer.
     """
 
-    _memory_manager: MemoryManager = PrivateAttr()
     _record_type: str = PrivateAttr(default=None)
     _model: str = PrivateAttr(default="gemini-2.0-pro")
 
@@ -137,13 +136,10 @@ class RAGAgent(Agent):
         model: str = "gemini-2.0-pro",
         **kwargs,
     ):
-        super().__init__(
-            name="rag_agent" if not record_type else f"rag_{record_type}_agent",
-            model=model,
-            description=f"RAG agent for answering questions using Qdrant and Gemini. Record type: {record_type or 'all'}.",
-            **kwargs,
-        )
-        self._memory_manager = MemoryManager(memory_file_path)
+        super().__init__(memory_file_path, **kwargs)
+        self.name = "rag_agent" if not record_type else f"rag_{record_type}_agent"
+        self.model = model
+        self.description = f"RAG agent for answering questions using Qdrant and Gemini. Record type: {record_type or 'all'}."
         self._record_type = record_type
         self._model = model
 
@@ -194,57 +190,18 @@ class AnalysisRAGAgent(RAGAgent):
         self.description = "RAG agent specialized in analysis-related questions."
 
 
-class CoordinatorAgent(Agent):
+# --- ADK Hierarchy Pattern: Coordinator as ParallelAgent ---
+def create_coordinator_agent(memory_file_path: str):
     """
-    Coordinator agent that routes questions to specialized agents and aggregates their responses.
+    Returns a ParallelAgent as the coordinator, with RAG sub-agents.
     """
-
-    _progress_rag_agent: ProgressRAGAgent = PrivateAttr()
-    _analysis_rag_agent: AnalysisRAGAgent = PrivateAttr()
-    _general_rag_agent: RAGAgent = PrivateAttr()
-    _simple_interaction_agent: SimpleInteractionAgent = PrivateAttr()
-    _sub_agents: list = PrivateAttr()
-
-    def __init__(self, memory_file_path: str, **kwargs):
-        super().__init__(
-            name="coordinator_agent",
-            model="gemini-2.0-flash",
-            description="Coordinator agent that routes questions to specialized agents and aggregates their responses.",
-            **kwargs,
-        )
-        self._progress_rag_agent = ProgressRAGAgent(memory_file_path)
-        self._analysis_rag_agent = AnalysisRAGAgent(memory_file_path)
-        self._general_rag_agent = RAGAgent(memory_file_path)
-        self._simple_interaction_agent = SimpleInteractionAgent()
-        self._sub_agents = [
-            self._progress_rag_agent,
-            self._analysis_rag_agent,
-            self._general_rag_agent,
-        ]
-
-    async def run(self, context: InvocationContext) -> str:
-        user_message = context.session.state.get("user_message", "").lower()
-        query = user_message if user_message else ""
-        # First, check for simple interactions
-        if any(
-            word in query
-            for word in [
-                "hello",
-                "hi",
-                "hey",
-                "greetings",
-                "help",
-                "assist",
-                "support",
-                "how do i",
-                "what can you do",
-                "who are you",
-                "your name",
-            ]
-        ):
-            return await self._simple_interaction_agent.run(context)
-        # Parallel fan-out/gather for RAG agents
-        tasks = [agent.run(context) for agent in self._sub_agents]
-        results = await asyncio.gather(*tasks)
-        answer = "\n---\n".join(results)
-        return answer
+    return ParallelAgent(
+        name="coordinator_agent",
+        model="gemini-2.0-flash",
+        description="Coordinator agent that runs all specialized RAG agents in parallel.",
+        sub_agents=[
+            ProgressRAGAgent(memory_file_path),
+            AnalysisRAGAgent(memory_file_path),
+            RAGAgent(memory_file_path),
+        ],
+    )
