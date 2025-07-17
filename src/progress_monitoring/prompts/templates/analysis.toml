@@ -60,17 +60,15 @@ Compare with previous progress using concrete observations and measurable indica
 Format your response using the above headings with concise, factual content under each section.
 """
 
-variables = { current_phase = "Unknown", total_days_analyzed = 0, overall_progress_percentage = 0, project_start_date = "Unknown", analysis_date = "Today", historical_context = "" }
-
 [construction_analysis_openai]
 type = "analysis"
 model_name = "gpt-4o"
-temperature = 0.6
+temperature = 0.7
 max_tokens = 4000
-top_p = 0.9
-frequency_penalty = 0.1
-presence_penalty = 0.1
-description = "OpenAI-optimized construction site analysis prompt"
+top_p = 1.0
+frequency_penalty = 0.0
+presence_penalty = 0.0
+description = "Comprehensive construction site analysis optimized for OpenAI models"
 
 template = """
 INSTRUCTIONS: Provide a direct, professional construction site analysis. Do not include conversational phrases, greetings, or commentary. Start immediately with factual observations using the structure below.
@@ -116,7 +114,105 @@ Compare with previous progress using concrete observations and measurable indica
 Format your response using the above headings with concise, factual content under each section.
 """
 
-variables = { current_phase = "Unknown", total_days_analyzed = 0, overall_progress_percentage = 0, project_start_date = "Unknown", analysis_date = "Today", historical_context = "" }
+# IMAGE ANALYSIS PROMPTS (for ImageAnalyzer)
+
+[image_analysis_gemini]
+type = "analysis"
+model_name = "gemini-2.5-pro"
+temperature = 0.7
+max_tokens = 4000
+top_p = 1.0
+frequency_penalty = 0.0
+presence_penalty = 0.0
+description = "Image-focused analysis prompt for Gemini"
+
+template = """
+INSTRUCTIONS: Provide a direct, professional construction analysis. Do not include conversational phrases or commentary. Start immediately with factual observations using the structure below.
+
+${project_context}
+${previous_day_summary}
+
+REQUIRED ANALYSIS STRUCTURE:
+
+**1. DAILY ACTIVITIES**
+Document specific construction work performed today.
+
+**2. PROGRESS ACCOMPLISHED**
+List specific accomplishments and completions.
+
+**3. KEY OBSERVATIONS**
+Notable changes, installations, and issues.
+
+**4. SAFETY ASSESSMENT**
+Safety practices, violations, and concerns.
+
+**5. EQUIPMENT & PERSONNEL**
+Visible equipment, tools, and workforce details.
+
+**6. QUALITY CONTROL**
+Work quality assessment and standards compliance.
+
+**7. WEATHER IMPACT**
+How conditions affected work progress.
+
+**8. TIMELINE STATUS**
+Project schedule assessment.
+
+**COMPARATIVE ANALYSIS**
+Compare with previous progress using concrete observations and measurable indicators.
+
+Format your response using the above headings with concise, factual content under each section.
+"""
+
+[image_analysis_openai]
+type = "analysis"
+model_name = "gpt-4o"
+temperature = 0.7
+max_tokens = 4000
+top_p = 1.0
+frequency_penalty = 0.0
+presence_penalty = 0.0
+description = "Image-focused analysis prompt for OpenAI"
+
+template = """
+INSTRUCTIONS: Provide a direct, professional construction analysis. Do not include conversational phrases or commentary. Start immediately with factual observations using the structure below.
+
+${project_context}
+${previous_day_summary}
+
+REQUIRED ANALYSIS STRUCTURE:
+
+**1. DAILY ACTIVITIES**
+Document specific construction work performed today.
+
+**2. PROGRESS ACCOMPLISHED**
+List specific accomplishments and completions.
+
+**3. KEY OBSERVATIONS**
+Notable changes, installations, and issues.
+
+**4. SAFETY ASSESSMENT**
+Safety practices, violations, and concerns.
+
+**5. EQUIPMENT & PERSONNEL**
+Visible equipment, tools, and workforce details.
+
+**6. QUALITY CONTROL**
+Work quality assessment and standards compliance.
+
+**7. WEATHER IMPACT**
+How conditions affected work progress.
+
+**8. TIMELINE STATUS**
+Project schedule assessment.
+
+**COMPARATIVE ANALYSIS**
+Compare with previous progress using concrete observations and measurable indicators.
+
+Format your response using the above headings with concise, factual content under each section.
+"""
+
+# DAILY COMPARISON PROMPTS
 
 [daily_comparison_analysis]
 type = "analysis"
@@ -126,12 +222,12 @@ max_tokens = 4000
 top_p = 1.0
 frequency_penalty = 0.0
 presence_penalty = 0.0
-description = "Daily comparison analysis for day-by-day progress monitoring"
+description = "Daily comparison analysis for Gemini"
 
 template = """
 INSTRUCTIONS: Provide a direct, professional construction analysis for Day ${day_number}. Do not include conversational phrases or commentary. Start immediately with factual observations using the structure below.
 
-DAY ${day_number} ANALYSIS (${analysis_date})
+DAY ${day_number} ANALYSIS
 
 PROJECT CONTEXT:
 - Day: ${day_number} of ${total_days}
@@ -176,23 +272,21 @@ Schedule progress based on daily changes.
 
 Format your response using the above headings with concise, factual content under each section.
 """
-
-variables = { day_number = 1, total_days = 5, current_phase = "Unknown", overall_progress_percentage = 0, project_start_date = "Unknown", analysis_date = "Today", previous_day_summary = "" }
 
 [daily_comparison_analysis_openai]
 type = "analysis"
 model_name = "gpt-4o"
-temperature = 0.6
+temperature = 0.7
 max_tokens = 4000
-top_p = 0.9
-frequency_penalty = 0.1
-presence_penalty = 0.1
-description = "OpenAI-optimized daily comparison analysis for day-by-day progress monitoring"
+top_p = 1.0
+frequency_penalty = 0.0
+presence_penalty = 0.0
+description = "Daily comparison analysis for OpenAI"
 
 template = """
 INSTRUCTIONS: Provide a direct, professional construction analysis for Day ${day_number}. Do not include conversational phrases or commentary. Start immediately with factual observations using the structure below.
 
-DAY ${day_number} ANALYSIS (${analysis_date})
+DAY ${day_number} ANALYSIS
 
 PROJECT CONTEXT:
 - Day: ${day_number} of ${total_days}
@@ -236,6 +330,4 @@ Schedule progress based on daily changes.
 - Cumulative progress impact
 
 Format your response using the above headings with concise, factual content under each section.
-"""
-
-variables = { day_number = 1, total_days = 5, current_phase = "Unknown", overall_progress_percentage = 0, project_start_date = "Unknown", analysis_date = "Today", previous_day_summary = "" } 
+""" 

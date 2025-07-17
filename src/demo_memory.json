@@ -1,0 +1,258 @@
+{
+  "project_start_date": null,
+  "total_days_analyzed": 0,
+  "daily_reports": {},
+  "key_milestones": [],
+  "current_phase": "Unknown",
+  "overall_progress_percentage": 0,
+  "records": [
+    {
+      "id": "d29156b3-4271-48c5-92df-f92b32cbdc92",
+      "date": "2025-07-16",
+      "day_number": 1,
+      "image_folder_path": "/Users/afschowdhury/Code Local/crc/progress-monitoring/progress_monitoring/src/progress_monitoring/video_sampler/img_data/day1",
+      "analysis_content": "**1. DAILY ACTIVITIES**\n- Personnel engaged in a dry-stacking exercise of concrete masonry units (CMUs).\n- Two individuals participated in handling and placing CMU blocks on a concrete floor to form a rectangular perimeter.\n- The activity involved laying out a single, non-grouted course of blockwork.\n\n**2. PROGRESS ACCOMPLISHED**\n- A single-course, rectangular CMU mock-up or layout was completed.\n- Approximately 20 standard CMUs were placed.\n\n**3. KEY OBSERVATIONS**\n- Work is being conducted inside a workshop or training facility, not on an active construction site.\n- The CMU layout is being placed directly on the finished concrete floor without mortar, indicating a training or planning exercise.\n- The environment contains various construction tools and equipment (scaffolding, table saw, miter saws) that are not in use for this specific task.\n- Safety posters related to tool use are displayed on the wall.\n\n**4. SAFETY ASSESSMENT**\n- **Violations/Concerns:**\n    - Lack of appropriate Personal Protective Equipment (PPE). Neither individual is wearing safety glasses, gloves, or steel-toed boots.\n    - One individual is wearing open-toed footwear, posing a risk of foot injury.\n    - A potential trip hazard exists due to a wooden frame and a loose stack of CMUs located near the work area.\n\n**5. EQUIPMENT & PERSONNEL**\n- **Personnel:** Two individuals are on site. One appears to be instructing or supervising while the other performs the block placement.\n- **Equipment:**\n    - Materials: Standard 8x8x16 concrete masonry units.\n    - Tools: No hand tools, measuring devices, or mixing equipment are in use for the observed activity.\n\n**6. QUALITY CONTROL**\n- As a non-permanent training exercise, standard quality metrics (e.g., mortar joint consistency, plumb, level) are not applicable.\n- The focus of the activity appears to be on the process and layout rather than structural quality. No tools were observed being used to verify alignment or dimensions.\n\n**7. WEATHER IMPACT**\n- All activities were performed indoors. Weather conditions had no impact on the work.\n\n**8. TIMELINE STATUS**\n- The activity is consistent with a pre-project start date.\n- This is assessed as a training, mock-up, or planning exercise, not a scheduled construction task contributing to project completion.\n\n**COMPARATIVE ANALYSIS**\n- **Initial State:** The work area was clear of any CMU layout. A stack of approximately 25-30 CMUs was staged to the side.\n- **Final State:** A single-course rectangular CMU layout is complete on the floor. The initial stack of staged CMUs has been depleted.\n- **Measurable Indicators:** Progress is measured by the number of blocks placed, increasing from zero to approximately 20. The layout footprint has gone from zero to an estimated 40-50 square feet.",
+      "analysis_summary": "**1. DAILY ACTIVITIES**\n- Personnel engaged in a dry-stacking exercise of concrete masonry units (CMUs).\n- Two individuals participated in handling and placing CMU blocks on a concrete floor to form a rectangular perimeter.\n- The activity involved laying out a single, non-grouted course of blockwork.\n\n**2. PROGRESS ACCOMPLISHED**\n- A single-course, rectangular CMU mock-up or layout was completed.\n- Approximately 20 standard CMUs were placed.\n\n**3",
+      "images_count": 6,
+      "timestamp": "2025-07-16T13:58:54.934015",
+      "record_type": "analysis_report"
+    },
+    {
+      "id": "cede9708-2ac8-4948-9cbc-39b0e428596e",
+      "date": "2025-07-16",
+      "day_number": 1,
+      "image_folder_path": "/Users/afschowdhury/Code Local/crc/progress-monitoring/progress_monitoring/src/progress_monitoring/video_sampler/img_data/day1",
+      "analysis_content": "**1. DAILY ACTIVITIES**\n- Personnel engaged in a dry-stacking exercise of concrete masonry units (CMUs).\n- Two individuals participated in handling and placing CMU blocks on a concrete floor to form a rectangular perimeter.\n- The activity involved laying out a single, non-grouted course of blockwork.\n\n**2. PROGRESS ACCOMPLISHED**\n- A single-course, rectangular CMU mock-up or layout was completed.\n- Approximately 20 standard CMUs were placed.\n\n**3. KEY OBSERVATIONS**\n- Work is being conducted inside a workshop or training facility, not on an active construction site.\n- The CMU layout is being placed directly on the finished concrete floor without mortar, indicating a training or planning exercise.\n- The environment contains various construction tools and equipment (scaffolding, table saw, miter saws) that are not in use for this specific task.\n- Safety posters related to tool use are displayed on the wall.\n\n**4. SAFETY ASSESSMENT**\n- **Violations/Concerns:**\n    - Lack of appropriate Personal Protective Equipment (PPE). Neither individual is wearing safety glasses, gloves, or steel-toed boots.\n    - One individual is wearing open-toed footwear, posing a risk of foot injury.\n    - A potential trip hazard exists due to a wooden frame and a loose stack of CMUs located near the work area.\n\n**5. EQUIPMENT & PERSONNEL**\n- **Personnel:** Two individuals are on site. One appears to be instructing or supervising while the other performs the block placement.\n- **Equipment:**\n    - Materials: Standard 8x8x16 concrete masonry units.\n    - Tools: No hand tools, measuring devices, or mixing equipment are in use for the observed activity.\n\n**6. QUALITY CONTROL**\n- As a non-permanent training exercise, standard quality metrics (e.g., mortar joint consistency, plumb, level) are not applicable.\n- The focus of the activity appears to be on the process and layout rather than structural quality. No tools were observed being used to verify alignment or dimensions.\n\n**7. WEATHER IMPACT**\n- All activities were performed indoors. Weather conditions had no impact on the work.\n\n**8. TIMELINE STATUS**\n- The activity is consistent with a pre-project start date.\n- This is assessed as a training, mock-up, or planning exercise, not a scheduled construction task contributing to project completion.\n\n**COMPARATIVE ANALYSIS**\n- **Initial State:** The work area was clear of any CMU layout. A stack of approximately 25-30 CMUs was staged to the side.\n- **Final State:** A single-course rectangular CMU layout is complete on the floor. The initial stack of staged CMUs has been depleted.\n- **Measurable Indicators:** Progress is measured by the number of blocks placed, increasing from zero to approximately 20. The layout footprint has gone from zero to an estimated 40-50 square feet.",
+      "analysis_summary": "**1. DAILY ACTIVITIES**\n- Personnel engaged in a dry-stacking exercise of concrete masonry units (CMUs).\n- Two individuals participated in handling and placing CMU blocks on a concrete floor to form a rectangular perimeter.\n- The activity involved laying out a single, non-grouted course of blockwork.\n\n**2. PROGRESS ACCOMPLISHED**\n- A single-course, rectangular CMU mock-up or layout was completed.\n- Approximately 20 standard CMUs were placed.\n\n**3",
+      "progress_report": {
+        "current_phase": "Pre-construction",
+        "overall_progress_percentage": 0,
+        "daily_progress_percentage": 0,
+        "key_accomplishments": [],
+        "identified_issues": [],
+        "next_phase_indicators": [],
+        "estimated_timeline_status": "On Schedule",
+        "critical_path_items": []
+      },
+      "progress_summary": "{\n  \"current_phase\": \"Pre-construction\",\n  \"overall_progress_percentage\": 0,\n  \"daily_progress_percentage\": 0,\n  \"key_accomplishments\": [],\n  \"identified_issues\": [],\n  \"next_phase_indicators\": [],\n  \"estimated_timeline_status\": \"On Schedule\",\n  \"critical_path_items\": []\n}",
+      "timestamp": "2025-07-16T13:58:56.872715",
+      "record_type": "progress_report"
+    },
+    {
+      "id": "4e6dbeae-b559-4668-b7dd-c1b6f3f7234c",
+      "date": "2025-07-16",
+      "day_number": 1,
+      "image_folder_path": "/Users/afschowdhury/Code Local/crc/progress-monitoring/progress_monitoring/src/progress_monitoring/video_sampler/img_data/day1",
+      "analysis_content": "**1. DAILY ACTIVITIES**\n- Personnel performed a dry layout of a single course of Concrete Masonry Units (CMUs).\n- CMU blocks were manually moved from a pallet stack and placed on the concrete floor to define a rectangular perimeter.\n- Two individuals collaborated on the placement and alignment of the blocks.\n\n**2. PROGRESS ACCOMPLISHED**\n- A single-course, rectangular perimeter using approximately 32 CMUs has been fully laid out.\n- The work represents the establishment of a footprint for a future masonry structure or training mock-up.\n\n**3. KEY OBSERVATIONS**\n- The activity is a dry-fit exercise; no mortar was mixed or applied.\n- The work is being conducted indoors in a workshop or training facility environment, not on a typical construction site.\n- The layout is being set directly on a finished concrete slab.\n- Safety posters related to tool use are visible on the wall behind the work area.\n\n**4. SAFETY ASSESSMENT**\n- The immediate work area is clear of debris and trip hazards.\n- **Deficiencies:** Personnel are not utilizing appropriate Personal Protective Equipment (PPE).\n    - No safety glasses observed.\n    - No protective footwear observed (sneakers and clog-style shoes are in use).\n    - No work gloves were used for handling abrasive CMUs.\n\n**5. EQUIPMENT & PERSONNEL**\n- **Personnel:** Two individuals are on site performing the layout task.\n- **Equipment on Site:**\n    - Standard CMUs.\n    - Mobile scaffolding (staged, not in use).\n    - Table saw (staged, not in use).\n    - Mobile workbench and tool cabinet.\n    - Step ladder (staged, not in use).\n- No masonry-specific tools such as trowels, levels, or string lines were observed in use.\n\n**6. QUALITY CONTROL**\n- Alignment of the CMU course appears to be done by visual reference only.\n- As this is a dry layout, standard quality metrics for masonry (e.g., mortar joint consistency, level, plumb) are not applicable.\n- The layout establishes a consistent rectangular form, with blocks placed in contact with each other.\n\n**7. WEATHER IMPACT**\n- All work was performed indoors. Weather conditions had no impact on the activity.\n\n**8. TIMELINE STATUS**\n- This activity marks the start of physical work.\n- The specific task of laying out the first course was completed.\n- No project schedule is available to assess overall timeline status.\n\n**COMPARATIVE ANALYSIS**\n- As this is the initial report, there is no previous progress for comparison.\n- **Initial State:** Bare concrete floor with CMUs stacked to the side.\n- **Current State:** A complete single-course, rectangular perimeter of CMUs is now laid out on the floor.\n- **Measurable Indicator:** Progress increased from 0 blocks laid to approximately 32 blocks laid out in a dry-fit configuration.",
+      "analysis_summary": "**1. DAILY ACTIVITIES**\n- Personnel performed a dry layout of a single course of Concrete Masonry Units (CMUs).\n- CMU blocks were manually moved from a pallet stack and placed on the concrete floor to define a rectangular perimeter.\n- Two individuals collaborated on the placement and alignment of the blocks.\n\n**2. PROGRESS ACCOMPLISHED**\n- A single-course, rectangular perimeter using approximately 32 CMUs has been fully laid out.\n- The work represents the establishment of a footprint for a futur...",
+      "images_count": 6,
+      "config_info": {
+        "provider": "gemini",
+        "model_name": "gemini-2.5-pro",
+        "analysis_prompt_used": "image_analysis_gemini",
+        "progress_prompt_used": "progress_assessment",
+        "temperature": 0.7,
+        "max_tokens": 4000,
+        "generation_timestamp": "2025-07-16T14:18:25.323496"
+      },
+      "timestamp": "2025-07-16T14:18:25.323733",
+      "record_type": "analysis_report"
+    },
+    {
+      "id": "38bfb063-9b0f-4ddf-ba39-16e1b2c0ca68",
+      "date": "2025-07-16",
+      "day_number": 1,
+      "image_folder_path": "/Users/afschowdhury/Code Local/crc/progress-monitoring/progress_monitoring/src/progress_monitoring/video_sampler/img_data/day1",
+      "analysis_content": "**1. DAILY ACTIVITIES**\n- Personnel performed a dry layout of a single course of Concrete Masonry Units (CMUs).\n- CMU blocks were manually moved from a pallet stack and placed on the concrete floor to define a rectangular perimeter.\n- Two individuals collaborated on the placement and alignment of the blocks.\n\n**2. PROGRESS ACCOMPLISHED**\n- A single-course, rectangular perimeter using approximately 32 CMUs has been fully laid out.\n- The work represents the establishment of a footprint for a future masonry structure or training mock-up.\n\n**3. KEY OBSERVATIONS**\n- The activity is a dry-fit exercise; no mortar was mixed or applied.\n- The work is being conducted indoors in a workshop or training facility environment, not on a typical construction site.\n- The layout is being set directly on a finished concrete slab.\n- Safety posters related to tool use are visible on the wall behind the work area.\n\n**4. SAFETY ASSESSMENT**\n- The immediate work area is clear of debris and trip hazards.\n- **Deficiencies:** Personnel are not utilizing appropriate Personal Protective Equipment (PPE).\n    - No safety glasses observed.\n    - No protective footwear observed (sneakers and clog-style shoes are in use).\n    - No work gloves were used for handling abrasive CMUs.\n\n**5. EQUIPMENT & PERSONNEL**\n- **Personnel:** Two individuals are on site performing the layout task.\n- **Equipment on Site:**\n    - Standard CMUs.\n    - Mobile scaffolding (staged, not in use).\n    - Table saw (staged, not in use).\n    - Mobile workbench and tool cabinet.\n    - Step ladder (staged, not in use).\n- No masonry-specific tools such as trowels, levels, or string lines were observed in use.\n\n**6. QUALITY CONTROL**\n- Alignment of the CMU course appears to be done by visual reference only.\n- As this is a dry layout, standard quality metrics for masonry (e.g., mortar joint consistency, level, plumb) are not applicable.\n- The layout establishes a consistent rectangular form, with blocks placed in contact with each other.\n\n**7. WEATHER IMPACT**\n- All work was performed indoors. Weather conditions had no impact on the activity.\n\n**8. TIMELINE STATUS**\n- This activity marks the start of physical work.\n- The specific task of laying out the first course was completed.\n- No project schedule is available to assess overall timeline status.\n\n**COMPARATIVE ANALYSIS**\n- As this is the initial report, there is no previous progress for comparison.\n- **Initial State:** Bare concrete floor with CMUs stacked to the side.\n- **Current State:** A complete single-course, rectangular perimeter of CMUs is now laid out on the floor.\n- **Measurable Indicator:** Progress increased from 0 blocks laid to approximately 32 blocks laid out in a dry-fit configuration.",
+      "analysis_summary": "**1. DAILY ACTIVITIES**\n- Personnel performed a dry layout of a single course of Concrete Masonry Units (CMUs).\n- CMU blocks were manually moved from a pallet stack and placed on the concrete floor to define a rectangular perimeter.\n- Two individuals collaborated on the placement and alignment of the blocks.\n\n**2. PROGRESS ACCOMPLISHED**\n- A single-course, rectangular perimeter using approximately 32 CMUs has been fully laid out.\n- The work represents the establishment of a footprint for a futur...",
+      "progress_report": {
+        "current_phase": "Pre-Mobilization",
+        "overall_progress_percentage": 0,
+        "daily_progress_percentage": 0,
+        "key_accomplishments": [
+          "No accomplishments reported."
+        ],
+        "identified_issues": [
+          "No analysis data provided to assess progress or issues."
+        ],
+        "next_phase_indicators": [
+          "Awaiting start of work and initial site activities."
+        ],
+        "estimated_timeline_status": "To Be Determined",
+        "critical_path_items": [
+          "Project start and site mobilization."
+        ]
+      },
+      "progress_summary": "{\n  \"current_phase\": \"Pre-Mobilization\",\n  \"overall_progress_percentage\": 0,\n  \"daily_progress_percentage\": 0,\n  \"key_accomplishments\": [\n    \"No accomplishments reported.\"\n  ],\n  \"identified_issues\": [\n    \"No analysis data provided to assess progress or issues.\"\n  ],\n  \"next_phase_indicators\": [\n    \"Awaiting start of work and initial site activities.\"\n  ],\n  \"estimated_timeline_status\": \"To Be Determined\",\n  \"critical_path_items\": [\n    \"Project start and site mobilization.\"\n  ]\n}",
+      "config_info": {
+        "provider": "gemini",
+        "model_name": "gemini-2.5-pro",
+        "analysis_prompt_used": "image_analysis_gemini",
+        "progress_prompt_used": "progress_assessment",
+        "temperature": 0.7,
+        "max_tokens": 4000,
+        "generation_timestamp": "2025-07-16T14:18:25.323496"
+      },
+      "timestamp": "2025-07-16T14:18:25.681515",
+      "record_type": "progress_report"
+    },
+    {
+      "id": "83e0c43b-b69f-4887-8d46-2d75840c457e",
+      "date": "2025-07-16",
+      "date_timestamp": 1752642000.0,
+      "day_number": 1,
+      "image_folder_path": "/Users/afschowdhury/Code Local/crc/progress-monitoring/progress_monitoring/src/progress_monitoring/video_sampler/img_data/day1",
+      "analysis_content": "**1. DAILY ACTIVITIES**\n- Manual handling and placement of Concrete Masonry Units (CMUs) on a concrete slab floor.\n- A dry-stack layout of a single-course CMU wall was performed.\n- Two individuals collaborated on the placement and alignment of the blocks.\n\n**2. PROGRESS ACCOMPLISHED**\n- A single-course, rectangular perimeter of approximately 18 CMU blocks has been laid out.\n- The initial supply of stacked CMUs has been partially relocated to form the layout.\n\n**3. KEY OBSERVATIONS**\n- The work is a dry-stack exercise; no mortar is being applied.\n- The activity is taking place in an indoor workshop or training facility, not an active construction site.\n- The layout is being set directly on the concrete floor without the use of chalk lines, string lines, or leveling tools.\n- The CMU blocks appear to be standard 8\"x8\"x16\" units.\n\n**4. SAFETY ASSESSMENT**\n- Personnel are not wearing Personal Protective Equipment (PPE), including safety glasses, gloves, or steel-toed boots, while handling masonry units.\n- The work area is clean and free of significant trip hazards.\n- A high-visibility vest is draped over nearby scaffolding but is not in use.\n- The table saw in the background has its safety guard in place.\n\n**5. EQUIPMENT & PERSONNEL**\n- Personnel: Two individuals are on site.\n- Materials: A quantity of standard CMUs.\n- Equipment in the area (not in direct use): Mobile scaffolding unit, table saw, rolling tool cabinet, workbenches, various handheld power tools, step ladder.\n\n**6. QUALITY CONTROL**\n- The work appears to be a training mock-up or preliminary layout exercise.\n- Standard construction quality metrics such as mortar joint consistency, level, and plumb are not applicable to this dry-stack activity.\n- Gaps between the CMU blocks are inconsistent, which is typical for a non-bonded, temporary layout.\n\n**7. WEATHER IMPACT**\n- All observed work is being conducted indoors.\n- Weather conditions have no impact on the activity.\n\n**8. TIMELINE STATUS**\n- The project is at 0% completion and has not officially started.\n- The observed activity is pre-production, likely part of a training, planning, or mock-up phase, and does not represent progress against a construction schedule.\n\n**COMPARATIVE ANALYSIS**\n- This is the initial observation; no previous progress exists for comparison.\n- Baseline established: The site is an indoor workshop with materials staged for a training exercise.\n- Measurable indicators for future progress would include the transition from a dry layout to a mortared installation, the introduction of measurement and layout tools (levels, string lines), and an increase in the number of courses.",
+      "analysis_summary": "**1. DAILY ACTIVITIES**\n- Manual handling and placement of Concrete Masonry Units (CMUs) on a concrete slab floor.\n- A dry-stack layout of a single-course CMU wall was performed.\n- Two individuals collaborated on the placement and alignment of the blocks.\n\n**2. PROGRESS ACCOMPLISHED**\n- A single-course, rectangular perimeter of approximately 18 CMU blocks has been laid out.\n- The initial supply of stacked CMUs has been partially relocated to form the layout.\n\n**3",
+      "images_count": 6,
+      "config_info": {
+        "provider": "gemini",
+        "model_name": "gemini-2.5-pro",
+        "analysis_prompt_used": "image_analysis_gemini",
+        "progress_prompt_used": "progress_assessment",
+        "temperature": 0.7,
+        "max_tokens": 4000,
+        "generation_timestamp": "2025-07-16T14:27:00.698722"
+      },
+      "timestamp": "2025-07-16T14:27:00.702807",
+      "record_type": "analysis_report"
+    },
+    {
+      "id": "daba0c28-2657-4d21-9647-729f2fc509f8",
+      "date": "2025-07-16",
+      "date_timestamp": 1752642000.0,
+      "day_number": 1,
+      "image_folder_path": "/Users/afschowdhury/Code Local/crc/progress-monitoring/progress_monitoring/src/progress_monitoring/video_sampler/img_data/day1",
+      "analysis_content": "**1. DAILY ACTIVITIES**\n- Manual handling and placement of Concrete Masonry Units (CMUs) on a concrete slab floor.\n- A dry-stack layout of a single-course CMU wall was performed.\n- Two individuals collaborated on the placement and alignment of the blocks.\n\n**2. PROGRESS ACCOMPLISHED**\n- A single-course, rectangular perimeter of approximately 18 CMU blocks has been laid out.\n- The initial supply of stacked CMUs has been partially relocated to form the layout.\n\n**3. KEY OBSERVATIONS**\n- The work is a dry-stack exercise; no mortar is being applied.\n- The activity is taking place in an indoor workshop or training facility, not an active construction site.\n- The layout is being set directly on the concrete floor without the use of chalk lines, string lines, or leveling tools.\n- The CMU blocks appear to be standard 8\"x8\"x16\" units.\n\n**4. SAFETY ASSESSMENT**\n- Personnel are not wearing Personal Protective Equipment (PPE), including safety glasses, gloves, or steel-toed boots, while handling masonry units.\n- The work area is clean and free of significant trip hazards.\n- A high-visibility vest is draped over nearby scaffolding but is not in use.\n- The table saw in the background has its safety guard in place.\n\n**5. EQUIPMENT & PERSONNEL**\n- Personnel: Two individuals are on site.\n- Materials: A quantity of standard CMUs.\n- Equipment in the area (not in direct use): Mobile scaffolding unit, table saw, rolling tool cabinet, workbenches, various handheld power tools, step ladder.\n\n**6. QUALITY CONTROL**\n- The work appears to be a training mock-up or preliminary layout exercise.\n- Standard construction quality metrics such as mortar joint consistency, level, and plumb are not applicable to this dry-stack activity.\n- Gaps between the CMU blocks are inconsistent, which is typical for a non-bonded, temporary layout.\n\n**7. WEATHER IMPACT**\n- All observed work is being conducted indoors.\n- Weather conditions have no impact on the activity.\n\n**8. TIMELINE STATUS**\n- The project is at 0% completion and has not officially started.\n- The observed activity is pre-production, likely part of a training, planning, or mock-up phase, and does not represent progress against a construction schedule.\n\n**COMPARATIVE ANALYSIS**\n- This is the initial observation; no previous progress exists for comparison.\n- Baseline established: The site is an indoor workshop with materials staged for a training exercise.\n- Measurable indicators for future progress would include the transition from a dry layout to a mortared installation, the introduction of measurement and layout tools (levels, string lines), and an increase in the number of courses.",
+      "analysis_summary": "**1. DAILY ACTIVITIES**\n- Manual handling and placement of Concrete Masonry Units (CMUs) on a concrete slab floor.\n- A dry-stack layout of a single-course CMU wall was performed.\n- Two individuals collaborated on the placement and alignment of the blocks.\n\n**2. PROGRESS ACCOMPLISHED**\n- A single-course, rectangular perimeter of approximately 18 CMU blocks has been laid out.\n- The initial supply of stacked CMUs has been partially relocated to form the layout.\n\n**3",
+      "progress_report": {
+        "current_phase": "Pre-construction",
+        "overall_progress_percentage": 0,
+        "daily_progress_percentage": 0,
+        "key_accomplishments": [],
+        "identified_issues": [],
+        "next_phase_indicators": [],
+        "estimated_timeline_status": "On Schedule",
+        "critical_path_items": []
+      },
+      "progress_summary": "{\n  \"current_phase\": \"Pre-construction\",\n  \"overall_progress_percentage\": 0,\n  \"daily_progress_percentage\": 0,\n  \"key_accomplishments\": [],\n  \"identified_issues\": [],\n  \"next_phase_indicators\": [],\n  \"estimated_timeline_status\": \"On Schedule\",\n  \"critical_path_items\": []\n}",
+      "config_info": {
+        "provider": "gemini",
+        "model_name": "gemini-2.5-pro",
+        "analysis_prompt_used": "image_analysis_gemini",
+        "progress_prompt_used": "progress_assessment",
+        "temperature": 0.7,
+        "max_tokens": 4000,
+        "generation_timestamp": "2025-07-16T14:27:00.698722"
+      },
+      "timestamp": "2025-07-16T14:27:00.704654",
+      "record_type": "progress_report"
+    },
+    {
+      "id": "2a4617f4-0ea3-46d6-b962-4320ae5b776f",
+      "date": "2025-07-16",
+      "date_timestamp": 1752642000.0,
+      "day_number": 1,
+      "image_folder_path": "/Users/afschowdhury/Code Local/crc/progress-monitoring/progress_monitoring/src/progress_monitoring/video_sampler/img_data/day1",
+      "analysis_content": "**1. DAILY ACTIVITIES**\n- Two individuals engaged in a masonry layout exercise.\n- Concrete Masonry Units (CMUs) were transported from a stockpile and dry-stacked on the concrete floor.\n- A single-course, rectangular perimeter was laid out.\n- One individual placed the blocks while the second supervised and provided guidance.\n\n**2. PROGRESS ACCOMPLISHED**\n- The first course of a rectangular CMU structure has been fully laid out.\n- A total of approximately 32 blocks were placed to form the perimeter.\n\n**3. KEY OBSERVATIONS**\n- The work is a dry-stack exercise, performed without mortar.\n- The activity is taking place in an indoor workshop or training facility.\n- The layout is being set directly on the existing concrete slab.\n- Communication and instruction between the two individuals were observed throughout the process.\n\n**4. SAFETY ASSESSMENT**\n- **Violations/Concerns:** Lack of Personal Protective Equipment (PPE). Neither individual is wearing steel-toed boots, safety glasses, or gloves. One individual is wearing open-toed footwear while handling masonry blocks.\n- **Practices:** The general work area is organized and free of tripping hazards. Safety posters are displayed on the wall.\n\n**5. EQUIPMENT & PERSONNEL**\n- **Personnel:** Two workers present on site.\n- **Equipment:** Standard CMUs, mobile scaffolding, table saw, rolling tool cabinet, and various hand/power tools on workbenches.\n\n**6. QUALITY CONTROL**\n- The block layout follows a running bond pattern at the corners.\n- Alignment of the blocks appears straight by visual inspection.\n- As a dry-stack exercise, no mortar joints were created or inspected for consistency. The activity appears to be for training on placement and layout principles.\n\n**7. WEATHER IMPACT**\n- Work was conducted indoors; weather had no impact on operations.\n\n**8. TIMELINE STATUS**\n- The activity is consistent with a pre-construction training or mock-up phase.\n- This does not represent progress against a construction project schedule.\n\n**COMPARATIVE ANALYSIS**\n- **Initial State:** A stack of CMUs was present on the floor. No layout was in place.\n- **Final State:** A complete, single-course rectangular perimeter of CMUs has been laid out.\n- **Measurable Progress:** Progress can be measured from 0 blocks placed to approximately 32 blocks placed to complete the first-course layout.",
+      "analysis_summary": "**1. DAILY ACTIVITIES**\n- Two individuals engaged in a masonry layout exercise.\n- Concrete Masonry Units (CMUs) were transported from a stockpile and dry-stacked on the concrete floor.\n- A single-course, rectangular perimeter was laid out.\n- One individual placed the blocks while the second supervised and provided guidance.\n\n**2. PROGRESS ACCOMPLISHED**\n- The first course of a rectangular CMU structure has been fully laid out.\n- A total of approximately 32 blocks were placed to form the perimete...",
+      "images_count": 6,
+      "config_info": {
+        "provider": "gemini",
+        "model_name": "gemini-2.5-pro",
+        "analysis_prompt_used": "image_analysis_gemini",
+        "progress_prompt_used": "progress_assessment",
+        "temperature": 0.7,
+        "max_tokens": 4000,
+        "generation_timestamp": "2025-07-16T14:31:20.000550"
+      },
+      "timestamp": "2025-07-16T14:31:20.001647",
+      "record_type": "analysis_report"
+    },
+    {
+      "id": "f526d056-f6e7-42bc-aab3-5a4ce02ce16f",
+      "date": "2025-07-16",
+      "date_timestamp": 1752642000.0,
+      "day_number": 1,
+      "image_folder_path": "/Users/afschowdhury/Code Local/crc/progress-monitoring/progress_monitoring/src/progress_monitoring/video_sampler/img_data/day1",
+      "analysis_content": "**1. DAILY ACTIVITIES**\n- Two individuals engaged in a masonry layout exercise.\n- Concrete Masonry Units (CMUs) were transported from a stockpile and dry-stacked on the concrete floor.\n- A single-course, rectangular perimeter was laid out.\n- One individual placed the blocks while the second supervised and provided guidance.\n\n**2. PROGRESS ACCOMPLISHED**\n- The first course of a rectangular CMU structure has been fully laid out.\n- A total of approximately 32 blocks were placed to form the perimeter.\n\n**3. KEY OBSERVATIONS**\n- The work is a dry-stack exercise, performed without mortar.\n- The activity is taking place in an indoor workshop or training facility.\n- The layout is being set directly on the existing concrete slab.\n- Communication and instruction between the two individuals were observed throughout the process.\n\n**4. SAFETY ASSESSMENT**\n- **Violations/Concerns:** Lack of Personal Protective Equipment (PPE). Neither individual is wearing steel-toed boots, safety glasses, or gloves. One individual is wearing open-toed footwear while handling masonry blocks.\n- **Practices:** The general work area is organized and free of tripping hazards. Safety posters are displayed on the wall.\n\n**5. EQUIPMENT & PERSONNEL**\n- **Personnel:** Two workers present on site.\n- **Equipment:** Standard CMUs, mobile scaffolding, table saw, rolling tool cabinet, and various hand/power tools on workbenches.\n\n**6. QUALITY CONTROL**\n- The block layout follows a running bond pattern at the corners.\n- Alignment of the blocks appears straight by visual inspection.\n- As a dry-stack exercise, no mortar joints were created or inspected for consistency. The activity appears to be for training on placement and layout principles.\n\n**7. WEATHER IMPACT**\n- Work was conducted indoors; weather had no impact on operations.\n\n**8. TIMELINE STATUS**\n- The activity is consistent with a pre-construction training or mock-up phase.\n- This does not represent progress against a construction project schedule.\n\n**COMPARATIVE ANALYSIS**\n- **Initial State:** A stack of CMUs was present on the floor. No layout was in place.\n- **Final State:** A complete, single-course rectangular perimeter of CMUs has been laid out.\n- **Measurable Progress:** Progress can be measured from 0 blocks placed to approximately 32 blocks placed to complete the first-course layout.",
+      "analysis_summary": "**1. DAILY ACTIVITIES**\n- Two individuals engaged in a masonry layout exercise.\n- Concrete Masonry Units (CMUs) were transported from a stockpile and dry-stacked on the concrete floor.\n- A single-course, rectangular perimeter was laid out.\n- One individual placed the blocks while the second supervised and provided guidance.\n\n**2. PROGRESS ACCOMPLISHED**\n- The first course of a rectangular CMU structure has been fully laid out.\n- A total of approximately 32 blocks were placed to form the perimete...",
+      "progress_report": {
+        "current_phase": "Pre-Construction",
+        "overall_progress_percentage": 0,
+        "daily_progress_percentage": 0,
+        "key_accomplishments": [],
+        "identified_issues": [],
+        "next_phase_indicators": [],
+        "estimated_timeline_status": "On Schedule",
+        "critical_path_items": []
+      },
+      "progress_summary": "{\n  \"current_phase\": \"Pre-Construction\",\n  \"overall_progress_percentage\": 0,\n  \"daily_progress_percentage\": 0,\n  \"key_accomplishments\": [],\n  \"identified_issues\": [],\n  \"next_phase_indicators\": [],\n  \"estimated_timeline_status\": \"On Schedule\",\n  \"critical_path_items\": []\n}",
+      "config_info": {
+        "provider": "gemini",
+        "model_name": "gemini-2.5-pro",
+        "analysis_prompt_used": "image_analysis_gemini",
+        "progress_prompt_used": "progress_assessment",
+        "temperature": 0.7,
+        "max_tokens": 4000,
+        "generation_timestamp": "2025-07-16T14:31:20.000550"
+      },
+      "timestamp": "2025-07-16T14:31:20.315557",
+      "record_type": "progress_report"
+    },
+    {
+      "id": "187c8638-e522-4b0b-b62d-a580d5704aaf",
+      "date": "2025-07-16",
+      "date_timestamp": 1752642000.0,
+      "day_number": 2,
+      "image_folder_path": "/Users/afschowdhury/Code Local/crc/progress-monitoring/progress_monitoring/src/progress_monitoring/video_sampler/img_data/day2",
+      "analysis_content": "**1. DAILY ACTIVITIES**\n- The second course of Concrete Masonry Units (CMUs) was initiated on a pre-existing single-course perimeter.\n- One individual placed CMUs to form the second course while a second individual observed the work.\n- Blocks were dry-stacked in a running bond pattern on the back wall of the rectangular layout.\n\n**2. PROGRESS ACCOMPLISHED**\n- Approximately 75% of the second course on the back wall section has been completed.\n- A total of 6 CMUs have been added to the structure.\n\n**3. KEY OBSERVATIONS**\n- The activity is a dry-stacking masonry training exercise conducted indoors on a concrete slab.\n- No mortar is being used.\n- The CMU pattern is a standard running bond, with the joints of the second course centered on the blocks of the first course.\n- A wooden frame, potentially a template for a window or door opening, is staged next to the work area.\n\n**4. SAFETY ASSESSMENT**\n- The immediate work area is clear of debris and trip hazards.\n- No Personal Protective Equipment (PPE), such as safety glasses or work gloves, is in use by the individuals handling the abrasive CMUs.\n- Lifting techniques are inconsistent; bending at the waist was observed in addition to proper form (bending at the knees).\n\n**5. EQUIPMENT & PERSONNEL**\n- Personnel: Two individuals are present in the work area.\n- Materials: Standard hollow-core CMUs (approx. 8\"x8\"x16\").\n- Tools & Equipment: Scaffolding, rolling tool cabinet, table saw, and various hand/power tools are present in the background but not in active use for this specific task.\n\n**6. QUALITY CONTROL**\n- The running bond pattern is correctly executed.\n- Visual inspection indicates the blocks are laid with consistent alignment and tight joints, appropriate for a dry-stack exercise.\n- Adherence to bond strength or mortar joint specifications is not applicable.\n\n**7. WEATHER IMPACT**\n- Work is being performed indoors. Weather is not a factor.\n\n**8. TIMELINE STATUS**\n- No project schedule is available. The activity is consistent with a self-paced training or instructional module.\n\n**COMPARATIVE ANALYSIS**\nWork has progressed vertically from the horizontal layout established on the previous day. The previous activity completed the first course (32 blocks), establishing the footprint. Today’s activity began vertical construction, adding a partial second course and increasing the total block count to 38. The focus has shifted from foundation layout to wall erection. Workforce size remains unchanged.",
+      "analysis_summary": "**1. DAILY ACTIVITIES**\n- The second course of Concrete Masonry Units (CMUs) was initiated on a pre-existing single-course perimeter.\n- One individual placed CMUs to form the second course while a second individual observed the work.\n- Blocks were dry-stacked in a running bond pattern on the back wall of the rectangular layout.\n\n**2. PROGRESS ACCOMPLISHED**\n- Approximately 75% of the second course on the back wall section has been completed.\n- A total of 6 CMUs have been added to the structure.\n...",
+      "images_count": 6,
+      "config_info": {
+        "provider": "gemini",
+        "model_name": "gemini-2.5-pro",
+        "analysis_prompt_used": "image_analysis_gemini",
+        "progress_prompt_used": "progress_assessment",
+        "temperature": 0.7,
+        "max_tokens": 4000,
+        "generation_timestamp": "2025-07-16T14:34:08.660534"
+      },
+      "timestamp": "2025-07-16T14:34:08.661433",
+      "record_type": "analysis_report"
+    },
+    {
+      "id": "f3b3d75f-e179-4959-bc0d-b29cff681c3d",
+      "date": "2025-07-16",
+      "date_timestamp": 1752642000.0,
+      "day_number": 2,
+      "image_folder_path": "/Users/afschowdhury/Code Local/crc/progress-monitoring/progress_monitoring/src/progress_monitoring/video_sampler/img_data/day2",
+      "analysis_content": "**1. DAILY ACTIVITIES**\n- The second course of Concrete Masonry Units (CMUs) was initiated on a pre-existing single-course perimeter.\n- One individual placed CMUs to form the second course while a second individual observed the work.\n- Blocks were dry-stacked in a running bond pattern on the back wall of the rectangular layout.\n\n**2. PROGRESS ACCOMPLISHED**\n- Approximately 75% of the second course on the back wall section has been completed.\n- A total of 6 CMUs have been added to the structure.\n\n**3. KEY OBSERVATIONS**\n- The activity is a dry-stacking masonry training exercise conducted indoors on a concrete slab.\n- No mortar is being used.\n- The CMU pattern is a standard running bond, with the joints of the second course centered on the blocks of the first course.\n- A wooden frame, potentially a template for a window or door opening, is staged next to the work area.\n\n**4. SAFETY ASSESSMENT**\n- The immediate work area is clear of debris and trip hazards.\n- No Personal Protective Equipment (PPE), such as safety glasses or work gloves, is in use by the individuals handling the abrasive CMUs.\n- Lifting techniques are inconsistent; bending at the waist was observed in addition to proper form (bending at the knees).\n\n**5. EQUIPMENT & PERSONNEL**\n- Personnel: Two individuals are present in the work area.\n- Materials: Standard hollow-core CMUs (approx. 8\"x8\"x16\").\n- Tools & Equipment: Scaffolding, rolling tool cabinet, table saw, and various hand/power tools are present in the background but not in active use for this specific task.\n\n**6. QUALITY CONTROL**\n- The running bond pattern is correctly executed.\n- Visual inspection indicates the blocks are laid with consistent alignment and tight joints, appropriate for a dry-stack exercise.\n- Adherence to bond strength or mortar joint specifications is not applicable.\n\n**7. WEATHER IMPACT**\n- Work is being performed indoors. Weather is not a factor.\n\n**8. TIMELINE STATUS**\n- No project schedule is available. The activity is consistent with a self-paced training or instructional module.\n\n**COMPARATIVE ANALYSIS**\nWork has progressed vertically from the horizontal layout established on the previous day. The previous activity completed the first course (32 blocks), establishing the footprint. Today’s activity began vertical construction, adding a partial second course and increasing the total block count to 38. The focus has shifted from foundation layout to wall erection. Workforce size remains unchanged.",
+      "analysis_summary": "**1. DAILY ACTIVITIES**\n- The second course of Concrete Masonry Units (CMUs) was initiated on a pre-existing single-course perimeter.\n- One individual placed CMUs to form the second course while a second individual observed the work.\n- Blocks were dry-stacked in a running bond pattern on the back wall of the rectangular layout.\n\n**2. PROGRESS ACCOMPLISHED**\n- Approximately 75% of the second course on the back wall section has been completed.\n- A total of 6 CMUs have been added to the structure.\n...",
+      "progress_report": {
+        "current_phase": "Project Initiation",
+        "overall_progress_percentage": 0,
+        "daily_progress_percentage": 0,
+        "key_accomplishments": [],
+        "identified_issues": [],
+        "next_phase_indicators": [],
+        "estimated_timeline_status": "On Schedule",
+        "critical_path_items": []
+      },
+      "progress_summary": "{\n  \"current_phase\": \"Project Initiation\",\n  \"overall_progress_percentage\": 0,\n  \"daily_progress_percentage\": 0,\n  \"key_accomplishments\": [],\n  \"identified_issues\": [],\n  \"next_phase_indicators\": [],\n  \"estimated_timeline_status\": \"On Schedule\",\n  \"critical_path_items\": []\n}",
+      "config_info": {
+        "provider": "gemini",
+        "model_name": "gemini-2.5-pro",
+        "analysis_prompt_used": "image_analysis_gemini",
+        "progress_prompt_used": "progress_assessment",
+        "temperature": 0.7,
+        "max_tokens": 4000,
+        "generation_timestamp": "2025-07-16T14:34:08.660534"
+      },
+      "timestamp": "2025-07-16T14:34:09.056023",
+      "record_type": "progress_report"
+    }
+  ],
+  "last_updated": "2025-07-16T14:34:09.106179",
+  "total_records": 10
+}
