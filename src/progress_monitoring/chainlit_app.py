@@ -1,72 +1,32 @@
 import chainlit as cl
-from google.adk.agents import ParallelAgent
 
-from progress_monitoring.chat_agents.memory_agent import (
-    AnalysisRAGAgent,
-    ProgressRAGAgent,
-    RAGAgent,
-    SimpleInteractionAgent,
-)
-
-# Path to the memory file
-MEMORY_FILE = "src/progress_monitoring/my_project_memory.json"
-
-# Instantiate specialized agents
-progress_rag_agent = ProgressRAGAgent(memory_file_path=MEMORY_FILE)
-analysis_rag_agent = AnalysisRAGAgent(memory_file_path=MEMORY_FILE)
-general_rag_agent = RAGAgent(memory_file_path=MEMORY_FILE)
-simple_interaction_agent = SimpleInteractionAgent()
-
-# Compose multi-agent system using ADK's ParallelAgent
-agent = ParallelAgent(
-    name="coordinator_agent",
-    sub_agents=[progress_rag_agent, analysis_rag_agent, general_rag_agent],
-    model="gemini-2.0-flash",
-    description="Coordinator agent that runs all specialized RAG agents in parallel.",
-)
+from progress_monitoring.chat_agents.chat_agent import ADKChatbotRunner
 
 
 @cl.on_message
 async def handle_message(message: cl.Message):
     """
-    Handle incoming user messages, check for simple interactions, otherwise pass to ParallelAgent and return the response.
+    Handle incoming user messages using the new ADKChatbotRunner-based RAG system, with streaming and debug logging.
     """
-    from uuid import uuid4
+    import asyncio
+    import logging
 
-    from google.adk.agents.invocation_context import InvocationContext
-    from google.adk.sessions import InMemorySessionService, Session
+    chatbot = ADKChatbotRunner()
+    user_query = message.content
 
-    session = Session(id=str(uuid4()), appName="progress-monitoring", userId="user")
-    session.state["user_message"] = message.content
-    session_service = InMemorySessionService()
-    context = InvocationContext(
-        session=session,
-        session_service=session_service,
-        invocation_id=str(uuid4()),
-        agent=agent,
-    )
-    # Pre-check for simple interactions
-    user_message = message.content.lower()
-    if any(
-        word in user_message
-        for word in [
-            "hello",
-            "hi",
-            "hey",
-            "greetings",
-            "help",
-            "assist",
-            "support",
-            "how do i",
-            "what can you do",
-            "who are you",
-            "your name",
-        ]
-    ):
-        answer = await simple_interaction_agent.run(context)
-    else:
-        answer = await agent.run(context)
-    await cl.Message(content=answer).send()
+    # Debug: Log the incoming user query
+    logging.debug(f"[DEBUG] Received user query: {user_query}")
+    await cl.Message(content="[DEBUG] Processing your request...").send()
+
+    # Stream the response as it is generated
+    async for chunk in chatbot.stream_query(user_query):
+        if chunk and chunk.strip():
+            # Debug: Log each streamed chunk
+            logging.debug(f"[DEBUG] Streamed chunk: {chunk}")
+            await cl.Message(content=chunk).send()
+
+    # Debug: Indicate end of streaming
+    await cl.Message(content="[DEBUG] Response complete.").send()
 
 
 if __name__ == "__main__":
